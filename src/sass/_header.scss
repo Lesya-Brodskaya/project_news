@@ -1,0 +1,72 @@
+@media screen and (max-width: 400px) {
+  .logo {
+    display: block;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    text-decoration: none;
+    color: #111321;
+  }
+
+  .search-input {
+    width: 172px;
+    display: none;
+    border: 1px solid #111321;
+    border-radius: 20px;
+    padding: 5px 0 5px 48px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: #111321;
+    opacity: 0.4;
+  }
+
+  .header {
+    padding: 24px 0 24px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .form-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .btn-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+  .search-btn-icon {
+    width: 15px;
+    height: 15px;
+    background-image: url('../images/mob/searc-icon.svg');
+  }
+  .show {
+    display: block;
+  }
+  .hide {
+    display: none;
+  }
+  .menu-open-btn {
+    margin-left: 20px;
+    width: 24px;
+    height: 24px;
+    background-image: url('../images/mob/menu.svg');
+  }
+  .search-btn {
+    position: absolute;
+    bottom: 8px;
+    left: 15px;
+  }
+  .outline {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+  }
+}
