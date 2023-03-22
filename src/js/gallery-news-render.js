@@ -3,7 +3,6 @@ import { galleryFetch } from './galley-news-fetch';
 const searchForm = document.querySelector(".news-search-form");
 const newsGalleryLnk = document.querySelector(".news-gallery");
 
-//formLnk.addEventListener('submit', onSubmitBtn);
 //news-gallery
 
 let currentPage = 1;
