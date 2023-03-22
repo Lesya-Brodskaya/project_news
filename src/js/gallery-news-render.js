@@ -75,16 +75,24 @@ async function renderData(dataResponse) {
 
 
 async function readDataArrayToMarcup(articlesArray) {
-  return await articlesArray.map(({ abstract, headline, keywords, multimedia, pub_data, snippet, web_url }) => { 
+  return await articlesArray.map(({ abstract, headline, keywords, multimedia, pub_date, snippet, web_url }) => { 
+    console.log(multimedia.length);
+    const imageURL = "";//multimedia[0];     
+    if (multimedia.length !== 0) imagwURL = multimedia[0];
+    console.log(keywords);
+    console.log(headline);
+    const keywordsMap = keywords.map(({ value }) => { return value; }).join(', ');
+    console.log(keywordsMap);
     return `
     <div class="news-gallery__item">
     <a class="news-gallery__image" href="${web_url}">
-    <div class="news-gallery__img-container"><img src="${multimedia[0]}" alt="${keywords}" loading="lazy"/></div>
+    <div class="news-gallery__img-container"><img src="${imageURL}" 
+    alt="${keywordsMap}" loading="lazy"/></div>
     </a>
     <div class="news-gallery__info">
-      <p class="news-gallery__header">${headline}</p>
+      <p class="news-gallery__header">${headline.main}</p>
       <p class="news-gallery__abstract">${abstract}</p>
-      <p class="news-gallery__pub_data">${pub_data}</p>
+      <p class="news-gallery__pub_data">${pub_date}</p>
       <!--p class="news-gallery__snippet">${snippet}</p-->
     </div>
     <a class="news-gallery__read-more" href="${web_url}">Read more...</a>
