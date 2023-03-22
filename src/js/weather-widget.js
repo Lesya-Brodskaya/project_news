@@ -2,7 +2,9 @@ import moment from 'moment';
 
 const API_KEY = 'c6d27dc8c63eae4b1bf25b80583f432d';
 const URL = 'https://api.openweathermap.org/data/2.5/weather?';
-const currentDate = moment().format('ddd Do MMMM YYYY');
+const currentWeekday = moment().format('dddd');
+const currentDate = moment().format('Do MMM YYYY');
+console.log(currentDate);
 function getWeatherInfo(city) {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
@@ -14,7 +16,7 @@ function getWeatherInfo(city) {
       const celsiusTemp =
         Math.round(weather.main.feels_like - 273.15) + '&deg;';
 
-      const markup = `<div class="weather-card"><div class="weather-card__info"><p class="weather-card__temperature">${celsiusTemp}</p><p class="weather-card__main">${weather.weather[0].main}</p><p class="weather-card__geolocation">${weather.name}</p><img src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png"><p class="weather-card__date"></p>${currentDate}</div></div>`;
+      const markup = `<div class="weather-card"><div class="weather-card__info"><p class="weather-card__temperature">${celsiusTemp}</p><p class="weather-card__main">${weather.weather[0].main}</p><p class="weather-card__geolocation">${weather.name}</p></div><img class="weather-card__icon" src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png"><p class="weather-card__date"><br>${currentWeekday}</br>${currentDate}</p></div>`;
       return document.body.insertAdjacentHTML('beforeend', markup);
     });
 }
