@@ -1,9 +1,28 @@
 import { galleryFetch } from './galley-news-fetch';
 
-const searchForm = document.querySelector(".news-search-form");
+const searchForm = document.querySelector(".search-form");
 const newsGalleryLnk = document.querySelector(".news-gallery");
 
 //news-gallery
+/*
+<form class="search-form">
+      <input
+        class="search-input"
+        type="text"
+        name="search_input"
+        id="for_search"
+        placeholder="Search |"
+      />
+      <button
+        class="btn-reset search-btn-icon show-search-input-btn"
+        type="button"
+      ></button>
+      <button
+        class="btn-reset search-btn-icon search-btn hide"
+        type="submit"
+      ></button>
+    </form>
+*/
 
 let currentPage = 1;
 let currentHits = 0;
@@ -18,13 +37,13 @@ function onSearchBtn(e) {
     newsGalleryLnk.innerHTML = '';
     
     const {
-    elements: { searchQuery },
+    elements: { search_input },
   } = e.currentTarget;
 
-    globalSearchQuery = searchQuery.value.trim();
+    globalSearchQuery = search_input.value.trim();
     
     if (globalSearchQuery.length === 0) return;
-    console.log(globalSearchQuery);
+    //console.log(globalSearchQuery);
 
     operateDataBackEnd(globalSearchQuery, currentPage);
 }
