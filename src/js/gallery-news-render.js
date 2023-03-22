@@ -59,7 +59,73 @@ async function operateDataBackEnd(searchQuery, searchPage) {
 }
 
 async function renderData(dataResponse) { 
-  await console.log(dataResponse);
-  //await console.log(dataResponse.json());
-  //await console.log(dataResponse.js);
+   console.log(dataResponse);  
+  const articles = dataResponse.docs;
+  await console.log(articles);
+  newsGalleryLnk.innerHTML = '';
+  if (articles.length === 0) return;
+  try { 
+    const galleryMurkup = await readDataArrayToMarcup(articles);
+    newsGalleryLnk.insertAdjacentHTML('beforeend', galleryMurkup);
+  }
+  catch (e) { 
+    console.log(e.message);
+  }
 }
+
+
+async function readDataArrayToMarcup(articlesArray) {
+  return await articlesArray.map(({ abstract, headline, keywords, multimedia, pub_data, snippet, web_url }) => { 
+    return `
+    <div class="news-gallery__item">
+    <a class="news-gallery__image" href="${web_url}">
+    <div class="news-gallery__img-container"><img src="${multimedia[0]}" alt="${keywords}" loading="lazy"/></div>
+    </a>
+    <div class="news-gallery__info">
+      <p class="news-gallery__header">${headline}</p>
+      <p class="news-gallery__abstract">${abstract}</p>
+      <p class="news-gallery__pub_data">${pub_data}</p>
+      <!--p class="news-gallery__snippet">${snippet}</p-->
+    </div>
+    <a class="news-gallery__read-more" href="${web_url}">Read more...</a>
+    </div>
+    `; 
+  }).join('');
+}
+/*
+export async function readDataArrayToMarcup(hitsArray) {
+  //previewURL
+  return await hitsArray
+    .map(
+      ({
+        largeImageURL,
+        webformatURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
+        return `<a class="gallery__item" href="${largeImageURL}"><div class="photo-card">
+  <div class="photo-container"><img src="${webformatURL}" alt="${tags}" loading="lazy" /></div>
+  <div class="info">
+    <p class="info-item">
+      <b>Likes ${likes}</b>
+    </p>
+    <p class="info-item">
+      <b>Views ${views}</b>
+    </p>
+    <p class="info-item">
+      <b>Comments ${comments}</b>
+    </p>
+    <p class="info-item">
+      <b>Downloads ${downloads}</b>
+    </p>
+  </div>
+</div></a>`;
+      }
+    )
+    .join('');
+}
+
+*/
