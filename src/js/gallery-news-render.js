@@ -76,9 +76,10 @@ async function renderData(dataResponse) {
 
 async function readDataArrayToMarcup(articlesArray) {
   return await articlesArray.map(({ abstract, headline, keywords, multimedia, pub_date, snippet, web_url }) => { 
-    console.log(multimedia.length);
-    const imageURL = "";//multimedia[0];     
-    if (multimedia.length !== 0) imagwURL = multimedia[0];
+    const firstImageUrl = multimedia.map((url) => { return url; })[0];
+    console.log(firstImageUrl);
+    const imageURL = "../src/images/mob/not-found-m.png";//multimedia[0];     
+    //if (multimedia.length !== 0) imagwURL = firstImageUrl;
     console.log(keywords);
     console.log(headline);
     const keywordsMap = keywords.map(({ value }) => { return value; }).join(', ');
