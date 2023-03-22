@@ -27,3 +27,5 @@ function getWeatherByGeolocation() {
       getWeatherInfo(currentCity.city);
     });
 }
+
+getWeatherByGeolocation();
