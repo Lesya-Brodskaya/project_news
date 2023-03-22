@@ -21,7 +21,7 @@ export async function galleryFetch(queryLine, currentPage) {
                 }
             }
         ); */
-        return response.data;
+        return response.data.response;
     }
     catch (e) { 
         console.log(e.message);

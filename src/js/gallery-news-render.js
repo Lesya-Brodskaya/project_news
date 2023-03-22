@@ -59,5 +59,7 @@ async function operateDataBackEnd(searchQuery, searchPage) {
 }
 
 async function renderData(dataResponse) { 
-    await console.log(dataResponse);
+  await console.log(dataResponse);
+  //await console.log(dataResponse.json());
+  //await console.log(dataResponse.js);
 }
