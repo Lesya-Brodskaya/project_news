@@ -1,0 +1,21 @@
+$colors: (
+  'primary-text': #111321,
+  'text-data': #a8a8a8,
+  'main-white': #f4f4f4,
+  'secondary-white': #fff,
+  'main-blue': #4440f6,
+  'secondary-blue': #4b48da,
+  'background-light': #f4f4f4,
+  'background-dark': #2e2e2e,
+  'background-footer': #7a7a7a,
+  'already-read': #00dd73,
+);
+// для додавання властивості кольору вик: color: color('primary-text');
+// background-color: color('background-light');
+@function color($key) {
+  @return map-get($colors, $key);
+}
+// зміння для ширини. вик: width: $width-mobile;
+$width-mobile: 320px;
+$width-tablet: 768px;
+$width-desktop: 1280px;

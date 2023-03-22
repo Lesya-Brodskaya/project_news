@@ -1,2 +1,14 @@
-@import './common';
-@import './example';
+@import './base/fonts';
+@import './utils/variables';
+@import './utils/mixin';
+@import './base/base';
+@import './base/container';
+
+@import './header';
+@import './categories';
+@import './gallery-news';
+@import './card-of-gallery';
+@import './page-notFound';
+@import './pagination';
+@import './footer';
+@import './mobile-menu';
