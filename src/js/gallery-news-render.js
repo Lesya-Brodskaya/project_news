@@ -14,8 +14,8 @@ onLoadNewsPage();
 async function onLoadNewsPage() { 
   try { 
     newsGalleryLnk.innerHTML = '';
-    const data = await galleryFetchPopular(currentPage);
-    console.log(data.data);
+    const dataResponse = await galleryFetchPopular(currentPage);
+    console.log(dataResponse.data.results);
   }
   catch (e) { 
     console.log(e.message);
@@ -98,40 +98,25 @@ async function readDataArrayToMarcup(articlesArray) {
     `; 
   }).join('');
 }
-/*
-export async function readDataArrayToMarcup(hitsArray) {
-  //previewURL
-  return await hitsArray
-    .map(
-      ({
-        largeImageURL,
-        webformatURL,
-        tags,
-        likes,
-        views,
-        comments,
-        downloads,
-      }) => {
-        return `<a class="gallery__item" href="${largeImageURL}"><div class="photo-card">
-  <div class="photo-container"><img src="${webformatURL}" alt="${tags}" loading="lazy" /></div>
-  <div class="info">
-    <p class="info-item">
-      <b>Likes ${likes}</b>
-    </p>
-    <p class="info-item">
-      <b>Views ${views}</b>
-    </p>
-    <p class="info-item">
-      <b>Comments ${comments}</b>
-    </p>
-    <p class="info-item">
-      <b>Downloads ${downloads}</b>
-    </p>
-  </div>
-</div></a>`;
-      }
-    )
-    .join('');
-}
 
+
+/*
+const key = "E0X3jomXcp5AQytChJb6iragE7Tjdw0j";
+const api = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
+function fetchNews(keyword) {
+  return fetch(`${api}q=${keyword}&api-key=${key}`)
+    .then((resolve) => {
+      return resolve.json();
+    })
+    .then((news) =>
+      console.log(
+        "http://www.nytimes.com/" + news.response.docs[0].multimedia[0].url
+      )
+    );
+}
+fetchNews("cat");
+*/
+
+/*
+https://github.com/nytimes/public_api_specs/issues/52
 */
