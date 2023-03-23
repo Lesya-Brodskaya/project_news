@@ -9,12 +9,27 @@ const refs = {
   themeSwitcher: document.querySelector('.theme-switcher'),
   formContainer: document.querySelector('.form-container'),
   themeToggle: document.querySelector('#theme-toggle'),
+  menu: document.querySelector('.menu'),
+  menuItemActive: document.querySelectorAll('.menu-item-active'),
 };
 refs.buttonShowInput.addEventListener('click', buttonShowInputClick);
 refs.form.addEventListener('submit', onFormSubmit);
 refs.buttonClose.addEventListener('click', onCloseMenu);
 refs.openMenuBtn.addEventListener('click', onMenuOpen);
 refs.themeToggle.addEventListener('click', toggleTheme);
+refs.menu.addEventListener('click', onMenuItemClick);
+
+function onMenuItemClick(event) {
+  if (event.target.nodeName !== 'A') {
+    return;
+  }
+  const menuItemActive = document.querySelector('.menu-item-active');
+  if (menuItemActive) {
+    menuItemActive.classList.remove('menu-item-active');
+  }
+
+  event.target.parentNode.classList.add('menu-item-active');
+}
 
 function onMenuOpen(event) {
   refs.navigation.classList.remove('hide');
@@ -23,6 +38,9 @@ function onMenuOpen(event) {
   refs.formContainer.classList.add('hide');
 }
 function onCloseMenu(event) {
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
   refs.navigation.classList.add('hide');
   refs.buttonClose.classList.add('hide');
   refs.formContainer.classList.remove('hide');
