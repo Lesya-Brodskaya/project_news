@@ -1,4 +1,5 @@
 import { galleryFetch } from './galley-news-fetch';
+import { galleryFetchPopular } from './galley-news-fetch';
 
 const searchForm = document.querySelector(".search-form");
 const newsGalleryLnk = document.querySelector(".news-gallery");
@@ -8,6 +9,18 @@ let currentHits = 0;
 let globalSearchQuery = '';
 
 searchForm.addEventListener('submit', onSearchBtn);
+onLoadNewsPage();
+
+async function onLoadNewsPage() { 
+  try { 
+    newsGalleryLnk.innerHTML = '';
+    const data = await galleryFetchPopular(currentPage);
+    console.log(data);
+  }
+  catch (e) { 
+    console.log(e.message);
+  }
+}
 
 function onSearchBtn(e) { 
     e.preventDefault();
