@@ -15,7 +15,7 @@ async function onLoadNewsPage() {
   try { 
     newsGalleryLnk.innerHTML = '';
     const data = await galleryFetchPopular(currentPage);
-    console.log(data);
+    console.log(data.data);
   }
   catch (e) { 
     console.log(e.message);
