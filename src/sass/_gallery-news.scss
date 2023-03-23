@@ -1,3 +1,51 @@
+.news-gallery{
+    display: grid;
+    // використовувати в коді: @include for-size-mobile ($width-desktop){використання інших стилів};
+    /*
+        $width-mobile: 320px;
+        $width-tablet: 768px;
+        $width-desktop: 1280px;
+
+                @mixin for-size-mobile($width) {
+                    @media (min-width: 320px) {
+                        width: $width;
+                        @content;
+                    }
+                }
+        
+                @mixin for-size-tablet($width) {
+                    @media (min-width: 768px) {
+                        width: $width-tablet;
+                        @content;
+                    }
+                }
+        
+                @mixin for-size-desktop($width) {
+                    @media (min-width: 1280px) {
+                        width: $width-desktop;
+                        @content;
+                    }
+                }
+    */
+        @include for-size-mobile($width-mobile){
+        max-width: $width-mobile;        
+        grid-template-columns: repeat(1, 1fr);
+    }
+        @include for-size-tablet($width-tablet) {
+            max-width: $width-tablet;            
+            grid-template-columns: repeat(2, 1fr);
+        }
+         @include for-size-desktop($width-desktop) {
+            max-width: $width-desktop;                      
+            grid-template-columns: repeat(3, 1fr);
+                  }
+        height: min-content;
+        grid-gap: 12px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+}
 .news-gallery__item
 {
     outline: 1px red dashed;

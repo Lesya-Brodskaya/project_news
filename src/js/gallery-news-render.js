@@ -40,7 +40,8 @@ async function operateDataBackEnd(searchQuery, searchPage) {
 async function renderData(dataResponse) { 
    console.log(dataResponse);  
   const articles = dataResponse.docs;
-  await console.log(articles);
+  console.log(articles);
+
   newsGalleryLnk.innerHTML = '';
   if (articles.length === 0) return;
   try { 
@@ -55,14 +56,18 @@ async function renderData(dataResponse) {
 
 async function readDataArrayToMarcup(articlesArray) {
   return await articlesArray.map(({ abstract, headline, keywords, multimedia, pub_date, snippet, web_url }) => { 
-    const firstImageUrl = multimedia.map((url) => { return url; })[0];
-    console.log(firstImageUrl);
-    const imageURL = "./src/images/mob/not-found-m.png";//multimedia[0];     
-    //if (multimedia.length !== 0) imagwURL = firstImageUrl;
-    console.log(keywords);
-    console.log(headline);
+    const firstImageUrl = multimedia.map((url) => { return url; });
+    //console.log("AA", articlesArray.then((test) => test.multimedia[0].url));
+
+    //console.log(firstImageUrl);
+    const imageURL = "./src/images/mob/not-found-m.png";//multimedia[0];
+    //console.log('articlesArray[0].multimedia[0].url ', articlesArray[0].multimedia[0].url);
+    //if (multimedia.length !== 0) imagwURL = articlesArray[0].multimedia[0].url;//firstImageUrl;
+    
+    //console.log(keywords);
+    //console.log(headline);
     const keywordsMap = keywords.map(({ value }) => { return value; }).join(', ');
-    console.log(keywordsMap);
+    //console.log(keywordsMap);
     return `
     <div class="news-gallery__item">
     <a class="news-gallery__image" href="${web_url}">
