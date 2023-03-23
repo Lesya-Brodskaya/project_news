@@ -5,9 +5,12 @@
     mix-blend-mode: normal;
     background-color: color('weather-card-bcg');
     padding-top: 37px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
+    font-family: font(_roboto);
+    @media screen and (min-width: $width-tablet) {
+        width: 353px;
+            height: 675px;
+            padding-top: 55px;
+    }
 }
 
 .weather-card__info {
@@ -18,16 +21,27 @@
     padding-left: 35px;
     padding-right: 35px;
     height: 64px;
+    @media screen and (min-width: $width-tablet) {
+        padding-left: 32px;
+        padding-right: 32px;
+        height: 80px;
+    }
 }
 
 .weather-card__temperature {
     font-family: 'Roboto';
+    text-align: right;
+    padding-right: 5px;
         font-style: normal;
         font-weight: 400;
         font-size: 55px;
         line-height: 64px;
         border-right: 1px solid color('secondary-white');
         color: color('secondary-white');
+        @media screen and (min-width: $width-tablet) {
+            font-size: 64px;
+            line-height: 70px;
+        }
 }
 
 .weather-card__main {
@@ -35,6 +49,9 @@
     font-size: 24px;
     line-height: 28px;
     color: color('secondary-white');
+    @media screen and (min-width: $width-tablet) {
+        font-size: 30px;
+    }
 }
 
 .weather-card__geolocation {
@@ -42,7 +59,7 @@
     gap: 5px;
     align-items: center;
     justify-content: center;
-    width: 120px;
+    width: 121px;
     height: 34px;
     margin-left: 11px;
     font-size: 14px;
@@ -50,15 +67,32 @@
     color: color('secondary-white');
     background-color: rgba(254, 254, 255, 0.3);
     border-radius: 10px;
+    @media screen and (min-width: $width-tablet) {
+        width: 177px;
+        height: 42px;
+        font-size: 20px;
+        line-height: 23px;
+    }
+}
+
+.weather-card__geolocation svg {
+    @media screen and (min-width: $width-tablet) {
+    width: 20px;
+    height: 20px;
+    }
 }
 
 .weather-card__icon {
     display: block;
-    width: 128px;
-    height: 121px;
-    margin-top: 54px;
+    width: 150px;
+    height: 150px;
+    margin-top: 34px;
     margin-left: auto;
     margin-right: auto;
+    @media screen and (min-width: $width-tablet) {
+        width: 235px;
+        height: 225px;
+    }
 }
 
 .weather-card__date {
@@ -66,7 +100,12 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 28px;
-        line-height: 33px;
-        text-align: center;
-        color: color('secondary-white');
+    line-height: 33px;
+    text-align: center;
+    color: color('secondary-white');
+    @media screen and (min-width: $width-tablet) {
+        width: 240px;
+        font-size: 36px;
+        line-height: 42px;
+    }
 }
