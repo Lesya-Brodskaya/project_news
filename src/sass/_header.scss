@@ -178,7 +178,7 @@
     width: 16px;
     height: 16px;
     left: 1px;
-    bottom: 2px;
+    bottom: 1px;
     background-color: #4b48db;
     -webkit-transition: 0.4s;
     transition: 0.4s;
@@ -203,12 +203,14 @@
 
   /* Rounded sliders */
   .slider.round {
+    border: 1px solid #4b48db;
     border-radius: 20px;
   }
 
   .slider.round:before {
     border-radius: 50%;
   }
+
   .theme-switcher {
     display: flex;
     margin-bottom: 18px;
