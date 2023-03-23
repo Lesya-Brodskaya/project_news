@@ -11,6 +11,10 @@
             height: 675px;
             padding-top: 55px;
     }
+    @media screen and(min-width: $width-desktop) {
+      width: 395px;
+      padding-top: 40px;
+    }
 }
 
 .weather-card__info {
@@ -26,6 +30,10 @@
         padding-right: 32px;
         height: 80px;
     }
+        @media screen and(min-width: $width-desktop) {
+            padding-left: 53px;
+            padding-right: 53px;
+        }
 }
 
 .weather-card__temperature {
@@ -68,11 +76,16 @@
     background-color: rgba(254, 254, 255, 0.3);
     border-radius: 10px;
     @media screen and (min-width: $width-tablet) {
-        width: 177px;
+        width: 155px;
         height: 42px;
-        font-size: 20px;
-        line-height: 23px;
+        font-size: 18px;
+        line-height: calc(21/18);
     }
+        @media screen and(min-width: $width-desktop) {
+            width: 177px;
+            font-size: 20px;
+            line-height: calc(23/20);
+        }
 }
 
 .weather-card__geolocation svg {
@@ -80,19 +93,28 @@
     width: 20px;
     height: 20px;
     }
+        @media screen and(min-width: $width-desktop) {
+            width: 22px;
+            height: 22px;
+        }
 }
 
 .weather-card__icon {
     display: block;
-    width: 150px;
-    height: 150px;
-    margin-top: 34px;
+    width: 180px;
+    height: 170px;
+    margin-top: 24px;
     margin-left: auto;
     margin-right: auto;
     @media screen and (min-width: $width-tablet) {
+        margin-top: 34px;
         width: 235px;
         height: 225px;
     }
+        @media screen and(min-width: $width-desktop) {
+            width: 250px;
+            height: 240px;
+        }
 }
 
 .weather-card__date {
@@ -100,12 +122,12 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 28px;
-    line-height: 33px;
+    line-height: calc(33/28);
     text-align: center;
     color: color('secondary-white');
     @media screen and (min-width: $width-tablet) {
         width: 240px;
         font-size: 36px;
-        line-height: 42px;
+        line-height: calc(42/36);
     }
 }
