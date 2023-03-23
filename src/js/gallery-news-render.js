@@ -3,27 +3,6 @@ import { galleryFetch } from './galley-news-fetch';
 const searchForm = document.querySelector(".search-form");
 const newsGalleryLnk = document.querySelector(".news-gallery");
 
-//news-gallery
-/*
-<form class="search-form">
-      <input
-        class="search-input"
-        type="text"
-        name="search_input"
-        id="for_search"
-        placeholder="Search |"
-      />
-      <button
-        class="btn-reset search-btn-icon show-search-input-btn"
-        type="button"
-      ></button>
-      <button
-        class="btn-reset search-btn-icon search-btn hide"
-        type="submit"
-      ></button>
-    </form>
-*/
-
 let currentPage = 1;
 let currentHits = 0;
 let globalSearchQuery = '';
@@ -78,7 +57,7 @@ async function readDataArrayToMarcup(articlesArray) {
   return await articlesArray.map(({ abstract, headline, keywords, multimedia, pub_date, snippet, web_url }) => { 
     const firstImageUrl = multimedia.map((url) => { return url; })[0];
     console.log(firstImageUrl);
-    const imageURL = "../src/images/mob/not-found-m.png";//multimedia[0];     
+    const imageURL = "./src/images/mob/not-found-m.png";//multimedia[0];     
     //if (multimedia.length !== 0) imagwURL = firstImageUrl;
     console.log(keywords);
     console.log(headline);
