@@ -12,15 +12,6 @@
     cursor: pointer;
 }
 
-.accordion .label::before {
-    content: '\25BD';
-    color: black;
-    position: absolute;
-    top: 50%;
-    right: -5px;
-    font-size: 30px;
-    transform: translateY(-50%);
-}
 
 
 
@@ -48,7 +39,3 @@
 }
 
 
-.accordion .container.active .label::before {
-    content: '\25B3';
-    font-size: 30px;
-}
