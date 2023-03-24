@@ -51,9 +51,9 @@ async function operateDataBackEnd(searchQuery, searchPage) {
 }
 
 async function renderData(dataResponse) { 
-   console.log(dataResponse);  
+   //console.log(dataResponse);  
   const articles = dataResponse.docs;
-  console.log(articles);
+   //console.log(articles);
 
   newsGalleryLnk.innerHTML = '';
   if (articles.length === 0) return;
@@ -70,15 +70,12 @@ async function renderData(dataResponse) {
 async function readDataArrayToMarcup(articlesArray) {
   return await articlesArray.map(({ abstract, headline, keywords, multimedia, pub_date, snippet, web_url }) => { 
     const firstImageUrl = multimedia.map((url) => { return url; });
-    //console.log("AA", articlesArray.then((test) => test.multimedia[0].url));
+    //console.log("firstUrl", firstImageUrl[0].url);
 
-    //console.log(firstImageUrl);
-    const imageURL = "./src/images/mob/not-found-m.png";//multimedia[0];
-    //console.log('articlesArray[0].multimedia[0].url ', articlesArray[0].multimedia[0].url);
-    //if (multimedia.length !== 0) imagwURL = articlesArray[0].multimedia[0].url;//firstImageUrl;
-    
-    //console.log(keywords);
-    //console.log(headline);
+    let imageURL = "./src/images/mob/not-found-m.png";
+      if (multimedia.length !== 0) imageURL = "https://www.nytimes.com/" + firstImageUrl[0].url;//articlesArray[0].multimedia[0].url;//firstImageUrl;
+    //console.log(web_url);
+    //console.log(imageURL);
     const keywordsMap = keywords.map(({ value }) => { return value; }).join(', ');
     //console.log(keywordsMap);
     return `
@@ -99,24 +96,3 @@ async function readDataArrayToMarcup(articlesArray) {
   }).join('');
 }
 
-
-/*
-const key = "E0X3jomXcp5AQytChJb6iragE7Tjdw0j";
-const api = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
-function fetchNews(keyword) {
-  return fetch(`${api}q=${keyword}&api-key=${key}`)
-    .then((resolve) => {
-      return resolve.json();
-    })
-    .then((news) =>
-      console.log(
-        "http://www.nytimes.com/" + news.response.docs[0].multimedia[0].url
-      )
-    );
-}
-fetchNews("cat");
-*/
-
-/*
-https://github.com/nytimes/public_api_specs/issues/52
-*/
