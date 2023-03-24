@@ -97,26 +97,17 @@ async function onLoadNewsPage() {
     newsGalleryLnk.innerHTML = '';
     const dataResponse = await galleryFetchPopular(currentPage);
      console.log("dataResponse ", dataResponse);
-    //abstract, headline, keywords, multimedia, pub_date, web_url
-    //headline.main
-    /*
-    abstract, adx_keywords, media, per_facet, 
-      media[0].url
-      per_facet.title,
-      per_facet.url
-    */
-    const popularArticlesMurkup = dataResponse.map(({ abstract, adx_keywords, media, title, per_facet, url, published_date}) => {
+    const popularArticlesMurkup = dataResponse.map(({ abstract, adx_keywords, media, title, per_facet, url, published_date }) => {
       console.log();
-      console.log("abstract ", abstract);
-      console.log("adx_keywords ", adx_keywords);
 
-      const imgUrl = "";//media.;
-      console.log("imgUrl", imgUrl);
-      console.log("per_facet", per_facet);
-      console.log("url ", url);
-      console.log("published_date", published_date);
-
-      
+      let imgUrl = "";
+      try {
+        imgUrl = String(Object(media[0])["media-metadata"][2].url);
+        //console.log("imgUrl-m", imgUrl);
+      }
+      catch (e) { 
+        console.log(e.message);
+      }         
       return newsCardMarcup(url, imgUrl, adx_keywords, title, abstract, published_date);   
     }).join('');
     
