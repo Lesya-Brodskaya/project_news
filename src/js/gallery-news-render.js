@@ -64,12 +64,12 @@ async function readDataArrayToMarcup(articlesArray) {
     const firstImageUrl = multimedia.map((url) => { return url; });    
       if (firstImageUrl.length !== 0) imageURL = nytURL + firstImageUrl[0].url;
     
-    return newsCardMarcup(web_url, imageURL, keywordsMap, headline.main, abstract, pub_date, web_url); 
+    return newsCardMarcup(web_url, imageURL, keywordsMap, headline.main, abstract, pub_date); 
   }).join('');
 }
 
 //headline.main
-function newsCardMarcup(web_url, imageURL, keywordsMap, headline, abstract, pub_date, web_url) { 
+function newsCardMarcup(web_url, imageURL, keywordsMap, headline, abstract, pub_date) { 
   return `
     <div class="news-gallery__item">
     <a class="news-gallery__image" href="${web_url}">
@@ -93,10 +93,10 @@ const cardNews = { img: null, title: null, description: null, id: null}
 popularNews.map (news => { return {img: news.media[0], title: news.title }})
 */
 async function onLoadNewsPage() { 
-  try { 
+  try {
     newsGalleryLnk.innerHTML = '';
     const dataResponse = await galleryFetchPopular(currentPage);
-    console.log(dataResponse);
+     console.log("dataResponse ", dataResponse);
     //abstract, headline, keywords, multimedia, pub_date, web_url
     //headline.main
     /*
@@ -105,18 +105,23 @@ async function onLoadNewsPage() {
       per_facet.title,
       per_facet.url
     */
-    const popularArticlesArr = dataResponse.map(({ abstract, adx_keywords, media, per_facet }) => {
+    const popularArticlesMurkup = dataResponse.map(({ abstract, adx_keywords, media, title, per_facet, url, published_date}) => {
       console.log();
-      console.log("abstract", abstract);
-      console.log("adx_keywords", adx_keywords);
-      console.log("media", media);
+      console.log("abstract ", abstract);
+      console.log("adx_keywords ", adx_keywords);
+
+      const imgUrl = "";//media.;
+      console.log("imgUrl", imgUrl);
       console.log("per_facet", per_facet);
-      console.log();
-      //console.log("media[0].url", media[0].url);
-      //console.log("per_facet.title", per_facet.title);
-      //console.log("per_facet.url", per_facet.url);
-      return;
-    });
+      console.log("url ", url);
+      console.log("published_date", published_date);
+
+      
+      return newsCardMarcup(url, imgUrl, adx_keywords, title, abstract, published_date);   
+    }).join('');
+    
+    newsGalleryLnk.insertAdjacentHTML('beforeend', popularArticlesMurkup);
+
   }
   catch (e) { 
     console.log(e.message);
