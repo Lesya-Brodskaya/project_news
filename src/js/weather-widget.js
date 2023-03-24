@@ -25,3 +25,5 @@ async function getWeatherByGeolocation() {
 getWeatherByGeolocation().then(currentCity => {
   fetchWeather(currentCity.city);
 });
+
+console.log('test');
