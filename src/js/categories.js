@@ -210,28 +210,40 @@ const dropDownWrapper = document.querySelector('.drop-down-wrapper');
 const otherSpan = document.querySelector('.others-span');
 const btnOther = document.querySelector('.categories-filter__other-btn');
 const arrowIconUp = document.querySelector('.svg-up-others-categories');
-
+// const sectionCategories = document.querySelector('.categories');
 
 window.addEventListener('resize', onWindowSizeChange);
 categBtnWrapper.addEventListener('click', onButtonCategClick);
 btnOther.addEventListener('click', onOthersBtnClick);
 
+onWindowSizeChange(categories);
+
+
 function onWindowSizeChange() {
   categBtnWrapper.innerHTML = "";
   dropDownWrapper.innerHTML = "";
+  let dropDownCategWrapper = [];
+  let dropCategories = [];
 
   if (window.innerWidth < 768) {
-    let dropDownCategWrapper = [];
-    for (let i = 0; i <= categories.length; i += 1) {
-      dropDownCategWrapper = categories.map(category => {
-        return `<button class="drop-down-list-btn">${category.display_name}</button>`
-      }).join('');
-      dropDownWrapper.innerHTML = dropDownCategWrapper;
-    }
+    // let dropDownCategWrapper = [];
+    // for (let i = 0; i <= categories.length; i += 1) {
+    //   dropDownCategWrapper = categories.map(category => {
+    //     return `<button class="drop-down-list-btn">${category.display_name}</button>`
+    //   }).join('');
+    //   dropDownWrapper.innerHTML = dropDownCategWrapper;
+    // }
+    dropDownCategWrapper = categories.map(category => {
+      return `<button class="drop-down-list-btn">${category.display_name}</button>`
+    }).join('');
+    dropDownWrapper.innerHTML = dropDownCategWrapper;
+
     } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
       otherSpan.textContent = "Others"
       categBtnNum = categories.slice(0, 4);
       let btnCategoryMarkup = [];
+      // let dropDownCategWrapper = [];
+
       for (let i = 0; i <= categBtnNum.length; i += 1) {
         btnCategoryMarkup = categBtnNum.map(category => {
           return `<div class = "btn-wrapper"><button class="filter-category__item-bt">${category.display_name}</button><div>`
@@ -239,7 +251,24 @@ function onWindowSizeChange() {
         categBtnWrapper.innerHTML = btnCategoryMarkup;
         console.log(categBtnWrapper);
       };
+
+      // for (let j = 5; j <= categBtnNum.length; i += 1) {
+      //   // dropDownCategWrapper = categories.slice(4, 49);
+      //   dropDownCategWrapper.map(category => {
+      //     return `<button class="drop-down-list-btn">${category.display_name}</button>`
+      //   }).join('');
+      //   dropDownWrapper.innerHTML = dropDownCategWrapper;
+      //   console.log(dropDownCategWrapper);
+      // };
+      dropCategories = categories.slice(4, 49);
+        dropDownCategWrapper = dropCategories.map(category => {
+                return `<button class="drop-down-list-btn">${category.display_name}</button>`
+              }).join('');
+              console.log(dropDownCategWrapper);
+              dropDownWrapper.innerHTML = dropDownCategWrapper;
+              console.log(dropDownWrapper);
       return;
+
     } else if  (window.innerWidth >= 1280) {
       otherSpan.textContent = "Others"
       categBtnNum = categories.slice(0, 6);
@@ -251,6 +280,12 @@ function onWindowSizeChange() {
         categBtnWrapper.innerHTML = btnCategoryMarkup;
         console.log(categBtnWrapper);
     };
+    dropCategories = categories.slice(6, 49);
+        dropDownCategWrapper = dropCategories.map(category => {
+      return `<button class="drop-down-list-btn">${category.display_name}</button>`
+    }).join('');
+    dropDownWrapper.innerHTML = dropDownCategWrapper;
+    console.log(dropDownWrapper);
     return;
   }
 
