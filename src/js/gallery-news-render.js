@@ -95,3 +95,14 @@ async function readDataArrayToMarcup(articlesArray) {
     `; 
   }).join('');
 }
+
+/*
+	
+	я би вам рекомендувала взяти з усіх 3 цих запитів 1 елемент - обʼєкт в якості прикладу, визначитись, які саме поля вам потрібні для картки з новиною, наприклад
+const cardNews = { img: null, title: null, description: null, id: null}
+після цього,  вам потрібно буде при запиті цих новим різного скажімо типу, трішки відозмінювати елементи масиву , проганяючи наче через адаптер
+
+
+Ivetta Dashkova
+  14 minutes ago
+наприклад, popularNews.map (news => { return {img: news.media[0], title: news.title }})*/
