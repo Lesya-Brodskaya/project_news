@@ -72,7 +72,7 @@ async function readDataArrayToMarcup(articlesArray) {
     const firstImageUrl = multimedia.map((url) => { return url; });
     //console.log("firstUrl", firstImageUrl[0].url);
 
-    let imageURL = "./src/images/mob/not-found-m.png";
+    let imageURL = "https://www.nytimes.com/images/2015/03/14/arts/16iht-rartsquare-2/16iht-rartsquare-2-watch308.jpg"; //"./src/images/mob/not-found-m.png";
       if (multimedia.length !== 0) imageURL = "https://www.nytimes.com/" + firstImageUrl[0].url;//articlesArray[0].multimedia[0].url;//firstImageUrl;
     //console.log(web_url);
     //console.log(imageURL);
@@ -95,4 +95,3 @@ async function readDataArrayToMarcup(articlesArray) {
     `; 
   }).join('');
 }
-
