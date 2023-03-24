@@ -11,17 +11,6 @@ let globalSearchQuery = '';
 searchForm.addEventListener('submit', onSearchBtn);
 onLoadNewsPage();
 
-async function onLoadNewsPage() { 
-  try { 
-    newsGalleryLnk.innerHTML = '';
-    const dataResponse = await galleryFetchPopular(currentPage);
-    console.log(dataResponse.data.results);
-  }
-  catch (e) { 
-    console.log(e.message);
-  }
-}
-
 function onSearchBtn(e) { 
     e.preventDefault();
     let currentPage = 1;
@@ -93,4 +82,21 @@ function newsCardMarcup(web_url, imageURL, keywordsMap, headline, abstract, pub_
     <a class="news-gallery__read-more" href="${web_url}">Read more...</a>
     </div>
     `;
+}
+
+/*
+const cardNews = { img: null, title: null, description: null, id: null}
+*/
+/*
+popularNews.map (news => { return {img: news.media[0], title: news.title }})
+*/
+async function onLoadNewsPage() { 
+  try { 
+    newsGalleryLnk.innerHTML = '';
+    const dataResponse = await galleryFetchPopular(currentPage);
+    console.log(dataResponse);
+  }
+  catch (e) { 
+    console.log(e.message);
+  }
 }

@@ -37,8 +37,8 @@ export async function galleryFetchPopular(currentPage) {
 
     try {
         let response = await axios.get(BASE_POPULAR_URL);
-        console.log("response", response);
-        return response;
+        //console.log("response", response);
+        return response.data.results;
     }
     catch (e) { 
         console.log(e.message);
