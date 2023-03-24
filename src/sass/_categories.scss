@@ -16,10 +16,11 @@ ul {
 
 }
 
-.filter-category__item-bt--active {
+.filter-category__item-bt--active, 
+.drop-down-wrapper--active {
   color: #FFFFFF;
   background-color: #4440F6;
-  border-color: 4B48DB;
+  border-color: #4B48DB;
 }
 
 .btn-wrapper {
@@ -27,11 +28,29 @@ ul {
   gap: 14px;
 }
 
-.container categories__container {
+.categories__container {
   display: inline-block;
 
 }
 
 .categories-other-dropdown {
   display: flex;
+}
+
+.drop-down-wrapper {
+  display: none;
+}
+
+.drop-down-wrapper--active {
+  display: block;
+
+}
+
+.categories-filter__other-btn {
+  border-color: #4B48DB;
+}
+
+.categories-filter__other-btn.active {
+  color: #FFFFFF;
+  background-color: #4440F6;
 }
