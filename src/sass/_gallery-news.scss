@@ -1,7 +1,7 @@
-.box-news {
-  display: grid;
-  // використовувати в коді: @include for-size-mobile ($width-desktop){використання інших стилів};
-  /*
+.news-gallery{
+    display: grid;
+    // використовувати в коді: @include for-size-mobile ($width-desktop){використання інших стилів};
+    /*
         $width-mobile: 320px;
         $width-tablet: 768px;
         $width-desktop: 1280px;
@@ -27,49 +27,35 @@
                     }
                 }
     */
-  @include for-size-mobile($width-mobile) {
-    max-width: $width-mobile;
-    grid-template-columns: repeat(1, 1fr);
-    grid-row-gap: 28px;
-  }
-  @include for-size-tablet($width-tablet) {
-    max-width: $width-tablet;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: min(675);
-    grid-column-gap: 30px;
-    grid-row-gap: 40px;
-  }
-  @include for-size-desktop($width-desktop) {
-    max-width: $width-desktop;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: min(675);
-    grid-column-gap: 30px;
-    grid-row-gap: 40px;
-  }
-  //   height: min-content;
-  //   grid-gap: 12px;
-  //   justify-content: center;
-  //   margin-left: auto;
-  //   margin-right: auto;
-  //   margin-bottom: 20px;
+        @include for-size-mobile($width-mobile){
+        max-width: $width-mobile;        
+        grid-template-columns: repeat(1, 1fr);
+    }
+        @include for-size-tablet($width-tablet) {
+            max-width: $width-tablet;            
+            grid-template-columns: repeat(2, 1fr);
+        }
+         @include for-size-desktop($width-desktop) {
+            max-width: $width-desktop;                      
+            grid-template-columns: repeat(3, 1fr);
+                  }
+        height: min-content;
+        grid-gap: 12px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
 }
-
-// .news-gallery__item {
-//   outline: 1px red dashed;
-// }
-// .news-gallery__image {
-//   width: 320px;
-//   height: 240px;
-//   outline: 1px peru dotted;
-// }
-// .news-gallery__header {
-//   font-weight: 700;
-// }
-
-.box-news__item {
-  position: relative;
-  height: 675px;
-  overflow: hidden;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+.news-gallery__item
+{
+    outline: 1px red dashed;
+}
+.news-gallery__image
+{
+    width: 320px;
+    height: 240px;
+    outline: 1px peru dotted;
+}
+.news-gallery__header{
+    font-weight: 700;
 }
