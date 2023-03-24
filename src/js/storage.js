@@ -1,35 +1,44 @@
+//const setLocalStorageItem = (key, value) => {
+//  try {
+//   const dataToSave = {
+//      date: new Date().toLocaleDateString(),
+//      value: value,
+//    };
+//    localStorage.setItem(key, JSON.stringify(dataToSave));
+//  } catch (error) {
+//    console.error(`Error setting ${key} in local storage: ${error}`);
+//  }
+//};
+// const getLocalStorageItem = (key, date = null) => {
+// try {
+//    const data = localStorage.getItem(key);
+//    if (!data) {
+//      return;
+//    }
+//    const parsedData = JSON.parse(data);
+//    if (!parsedData.hasOwnProperty('value')) {
+//      return;
+//    }
+//    if (date !== null) {
+//      const filteredData = parsedData.value.filter((item) => item.date === date);
+//      return filteredData;
+//    }
+//    return parsedData.value;
+//  } catch (error) {
+//    console.error(`Error getting ${key} from local storage: ${error}`);
+//    return null;
+//  }
+//};
 const setLocalStorageItem = (key, value) => {
   try {
-    const dataToSave = {
-      date: new Date().toLocaleDateString(),
-      value: value,
-    };
-    localStorage.setItem(key, JSON.stringify(dataToSave));
+    const dataToSave = JSON.stringify(value);
+    localStorage.setItem(key, dataToSave);
   } catch (error) {
     console.error(`Error setting ${key} in local storage: ${error}`);
   }
+    localStorage.setItem('readingNews');
 };
 
-const getLocalStorageItem = (key, date = null) => {
-  try {
-    const data = localStorage.getItem(key);
-    if (!data) {
-      return;
-    }
-    const parsedData = JSON.parse(data);
-    if (!parsedData.hasOwnProperty('value')) {
-      return;
-    }
-    if (date !== null) {
-      const filteredData = parsedData.value.filter((item) => item.date === date);
-      return filteredData;
-    }
-    return parsedData.value;
-  } catch (error) {
-    console.error(`Error getting ${key} from local storage: ${error}`);
-    return null;
-  }
-};
 
 function getReadingNewsFromStorage() {
   return JSON.parse(localStorage.getItem('readingNews'));
@@ -64,3 +73,5 @@ function getNewsByDate(date) {
   let readingNews = getReadingNewsFromStorage();
   return readingNews.filter((news) => news.date === date);
 }
+
+export { getNewsByDate , getReadingNewsFromStorage, getReadingNewsDates, addReadingNewsToStorage}
