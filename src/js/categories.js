@@ -222,7 +222,7 @@ function onWindowSizeChange() {
 
   if (window.innerWidth < 768) {
     let dropDownCategWrapper = [];
-    for (i = 0; i <= categories.length; i += 1) {
+    for (let i = 0; i <= categories.length; i += 1) {
       dropDownCategWrapper = categories.map(category => {
         return `<button class="drop-down-list-btn">${category.display_name}</button>`
       }).join('');
