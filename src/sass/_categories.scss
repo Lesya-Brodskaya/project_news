@@ -1,0 +1,37 @@
+ul {
+  list-style: none;
+}
+
+.drop-down-list-btn {
+  display: block;
+}
+
+.categories-btn-wrapper {
+  display: block;
+
+}
+
+.filter-category__item-bt {
+  display: block;
+
+}
+
+.filter-category__item-bt--active {
+  color: #FFFFFF;
+  background-color: #4440F6;
+  border-color: 4B48DB;
+}
+
+.btn-wrapper {
+  display: flex;
+  gap: 14px;
+}
+
+.container categories__container {
+  display: inline-block;
+
+}
+
+.categories-other-dropdown {
+  display: flex;
+}
