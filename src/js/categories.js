@@ -208,13 +208,26 @@ const categBtnWrapper = document.querySelector(".categories-btn-wrapper");
 const dropDownWrapper = document.querySelector('.drop-down-wrapper');
 // const dropDownList = document.querySelector('.drop-down-list');
 const otherSpan = document.querySelector('.others-span');
+const btnOther = document.querySelector('.categories-filter__other-btn');
+const arrowIconUp = document.querySelector('.svg-up-others-categories');
+
 
 window.addEventListener('resize', onWindowSizeChange);
+categBtnWrapper.addEventListener('click', onButtonCategClick);
+btnOther.addEventListener('click', onOthersBtnClick);
 
 function onWindowSizeChange() {
   categBtnWrapper.innerHTML = "";
+  dropDownWrapper.innerHTML = "";
+
   if (window.innerWidth < 768) {
-    otherSpan.textContent = "Categories";
+    let dropDownCategWrapper = [];
+    for (let i = 0; i <= categories.length; i += 1) {
+      dropDownCategWrapper = categories.map(category => {
+        return `<button class="drop-down-list-btn">${category.display_name}</button>`
+      }).join('');
+      dropDownWrapper.innerHTML = dropDownCategWrapper;
+    }
     } else if (window.innerWidth >= 768 && window.innerWidth < 1280) {
       otherSpan.textContent = "Others"
       categBtnNum = categories.slice(0, 4);
@@ -225,23 +238,6 @@ function onWindowSizeChange() {
         }).join('');
         categBtnWrapper.innerHTML = btnCategoryMarkup;
         console.log(categBtnWrapper);
-      // categBtnNum.forEach(category => {
-      //   const button = document.createElement('button');
-      //   button.classList.add('filter-category__item-bt');
-      //   button.textContent = category.display_name;
-      //   console.log(button.textContent);
-      //   categBtnWrapper.appendChild(button);
-      //   console.log(categBtnWrapper);
-      // });
-
-      // dropListCategNum = categories.slice(4, 49);
-      // dropListCategNum.forEach(category => {
-      //   const dropDownListBtn = document.createElement('button');
-      //   dropDownListBtn.classList.add('drop-down-list-btn');
-      //   dropDownListBtn.textContent = category.display_name;
-      //   dropDownWrapper.appendChild(dropDownListBtn);
-      // });
-      // return dropDownWrapper, categBtnWrapper;
       };
       return;
     } else if  (window.innerWidth >= 1280) {
@@ -260,8 +256,6 @@ function onWindowSizeChange() {
 
 }
 
-categBtnWrapper.addEventListener('click', onButtonCategClick);
-
 function onButtonCategClick(e) {
   if(e.target.nodeName !== 'BUTTON') {
     return;
@@ -277,4 +271,10 @@ function onButtonCategClick(e) {
   const nextActBtn = e.target;
   console.log(nextActBtn);
   nextActBtn.classList.add('filter-category__item-bt--active');
+}
+
+function onOthersBtnClick(e) {
+  e.target.classList.toggle('active');
+  dropDownWrapper.classList.toggle('drop-down-wrapper--active');
+
 }
