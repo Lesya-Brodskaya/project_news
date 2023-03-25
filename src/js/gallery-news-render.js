@@ -37,6 +37,7 @@ function onSearchBtn(e) {
 async function operateDataBackEnd(searchQuery, searchPage) {
   try {
     const data = await galleryFetch(searchQuery, searchPage);
+    startWeatherWidget();
     await renderData(data.docs);
   } catch (e) {
     console.log(e.message);
