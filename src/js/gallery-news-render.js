@@ -1,6 +1,9 @@
 import { galleryFetch } from './galley-news-fetch';
 import { galleryFetchPopular } from './galley-news-fetch';
-
+///*import './js/weather-widget';*/
+//getWeatherByGeolocation
+//startWeatherWidget();
+import { startWeatherWidget } from './weather-widget';
 
 const searchForm = document.querySelector(".search-form");
 const newsGalleryLnk = document.querySelector(".news-gallery");
@@ -14,6 +17,7 @@ let globalSearchQuery = '';
 
 searchForm.addEventListener('submit', onSearchBtn);
 onLoadNewsPage();
+//startWeatherWidget();
 
 function onSearchBtn(e) { 
     e.preventDefault();
@@ -96,7 +100,7 @@ popularNews.map (news => { return {img: news.media[0], title: news.title }})
 */
 async function onLoadNewsPage() { 
   try {
-    newsGalleryLnk.innerHTML = '';
+    newsGalleryLnk.innerHTML = '';    
     const dataResponse = await galleryFetchPopular(currentPage);
      console.log("dataResponse ", dataResponse);
     const popularArticlesMurkup = dataResponse.map(({ abstract, adx_keywords, media, title, per_facet, url, published_date }) => {
