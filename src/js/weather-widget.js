@@ -18,7 +18,7 @@ async function fetchWeather(city) {
 
   //Тут треба хитро передати маркап.
   //return document.div[".news-gallery"].insertAdjacentHTML('afterbegin', markup);
-  return document.body.insertAdjacentHTML('beforeend', markup);
+  return galleryLnk.insertAdjacentHTML('afterbegin', markup);
 }
 
 async function getWeatherByGeolocation() {
