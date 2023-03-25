@@ -105,7 +105,7 @@ function newsCardMarkup(
       <p class="news-gallery__text">${abstract}</p>
       <p class="news-gallery__pub_date">${pub_date}</p>
     </div>
-    <a class="news-gallery__read-more" href="${web_url}">Read more...</a>
+    <a class="news-gallery__read-more" href="${web_url}" target="_blank">Read more...</a>
     </div>
     <div class="overlay"></div>
     </div>
