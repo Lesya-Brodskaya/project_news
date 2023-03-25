@@ -4,6 +4,8 @@ const API_KEY = 'c6d27dc8c63eae4b1bf25b80583f432d';
 const URL = 'https://api.openweathermap.org/data/2.5/weather?';
 const currentWeekday = moment().format('dddd');
 const currentDate = moment().format('Do MMM YYYY');
+const galleryLnk = document.querySelector(".news-gallery");
+const bodyLnk = document.querySelector(".body");
 
 async function fetchWeather(city) {
   const response = await fetch(`${URL}q=${city}&appid=${API_KEY}`);

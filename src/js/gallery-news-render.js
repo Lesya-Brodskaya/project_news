@@ -1,8 +1,5 @@
 import { galleryFetch } from './galley-news-fetch';
 import { galleryFetchPopular } from './galley-news-fetch';
-///*import './js/weather-widget';*/
-//getWeatherByGeolocation
-//startWeatherWidget();
 import { startWeatherWidget } from './weather-widget';
 
 const searchForm = document.querySelector(".search-form");
@@ -19,7 +16,6 @@ searchForm.addEventListener('submit', onSearchBtn);
 newsGalleryLnk.innerHTML = ''; 
 
 onLoadNewsPage();
-await startWeatherWidget();
 
 function onSearchBtn(e) { 
     e.preventDefault();
@@ -94,15 +90,16 @@ function newsCardMarcup(web_url, imageURL, keywordsMap, headline, abstract, pub_
 }
 
 
-/*
-const cardNews = { img: null, title: null, description: null, id: null}
-*/
-/*
-popularNews.map (news => { return {img: news.media[0], title: news.title }})
-*/
 async function onLoadNewsPage() { 
+  newsGalleryLnk.innerHTML = '';  
+  try { 
+    await startWeatherWidget();
+  }
+  catch (e) { 
+    console.log(e.message);
+  }
   try {
-    newsGalleryLnk.innerHTML = '';    
+      
     const dataResponse = await galleryFetchPopular(currentPage);
      console.log("dataResponse ", dataResponse);
     const popularArticlesMurkup = dataResponse.map(({ abstract, adx_keywords, media, title, per_facet, url, published_date }) => {
@@ -111,7 +108,6 @@ async function onLoadNewsPage() {
       let imgUrl = "";
       try {
         imgUrl = String(Object(media[0])["media-metadata"][2].url);
-        //console.log("imgUrl-m", imgUrl);
       }
       catch (e) { 
         console.log(e.message);
@@ -127,6 +123,13 @@ async function onLoadNewsPage() {
   }
 }
 
+
+/*
+const cardNews = { img: null, title: null, description: null, id: null}
+*/
+/*
+popularNews.map (news => { return {img: news.media[0], title: news.title }})
+*/
 /*
 	
 	я би вам рекомендувала взяти з усіх 3 цих запитів 1 елемент - обʼєкт в якості прикладу, визначитись, які саме поля вам потрібні для картки з новиною, наприклад
