@@ -67,12 +67,12 @@ async function readDataArrayToMarcup(articlesArray) {
     const firstImageUrl = multimedia.map((url) => { return url; });    
       if (firstImageUrl.length !== 0) imageURL = nytURL + firstImageUrl[0].url;
     
-    return newsCardMarcup(web_url, imageURL, keywordsMap, headline.main, abstract, pub_date); 
+    return newsCardMarkup(web_url, imageURL, keywordsMap, headline.main, abstract, pub_date); 
   }).join('');
 }
 
 //headline.main
-function newsCardMarcup(web_url, imageURL, keywordsMap, headline, abstract, pub_date) { 
+function newsCardMarkup(web_url, imageURL, keywordsMap, headline, abstract, pub_date) { 
   return `
     <div class="news-gallery__item">
     <a class="news-gallery__image" href="${web_url}">
@@ -101,8 +101,17 @@ async function onLoadNewsPage() {
   try {
       
     const dataResponse = await galleryFetchPopular(currentPage);
-     console.log("dataResponse ", dataResponse);
-    const popularArticlesMurkup = dataResponse.map(({ abstract, adx_keywords, media, title, per_facet, url, published_date }) => {
+    console.log("dataResponse ", dataResponse);
+    newsGalleryLnk.insertAdjacentHTML('beforeend', popularArticlesMarkup(dataResponse));
+
+  }
+  catch (e) { 
+    console.log(e.message);
+  }
+}
+
+function popularArticlesMarkup(dataResponse) { 
+  return dataResponse.map(({ abstract, adx_keywords, media, title, url, published_date, updated }) => {
       console.log();
 
       let imgUrl = "";
@@ -112,32 +121,6 @@ async function onLoadNewsPage() {
       catch (e) { 
         console.log(e.message);
       }         
-      return newsCardMarcup(url, imgUrl, adx_keywords, title, abstract, published_date);   
+      return newsCardMarkup(url, imgUrl, adx_keywords, title, abstract, updated);   
     }).join('');
-    
-    newsGalleryLnk.insertAdjacentHTML('beforeend', popularArticlesMurkup);
-
-  }
-  catch (e) { 
-    console.log(e.message);
-  }
 }
-
-
-/*
-const cardNews = { img: null, title: null, description: null, id: null}
-*/
-/*
-popularNews.map (news => { return {img: news.media[0], title: news.title }})
-*/
-/*
-	
-	я би вам рекомендувала взяти з усіх 3 цих запитів 1 елемент - обʼєкт в якості прикладу, визначитись, які саме поля вам потрібні для картки з новиною, наприклад
-const cardNews = { img: null, title: null, description: null, id: null}
-після цього,  вам потрібно буде при запиті цих новим різного скажімо типу, трішки відозмінювати елементи масиву , проганяючи наче через адаптер
-
-
-Ivetta Dashkova
-  14 minutes ago
-наприклад, popularNews.map (news => { return {img: news.media[0], title: news.title }})*/
-
