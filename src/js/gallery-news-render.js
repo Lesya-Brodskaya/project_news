@@ -37,6 +37,7 @@ function onSearchBtn(e) {
 async function operateDataBackEnd(searchQuery, searchPage) {
   try {
     const data = await galleryFetch(searchQuery, searchPage);
+    startWeatherWidget();
     await renderData(data.docs);
   } catch (e) {
     console.log(e.message);
@@ -89,21 +90,26 @@ function newsCardMarkup(
   keywordsMap,
   headline,
   abstract,
-  pub_date
+  pub_date,
+  section
 ) {
   return `
     <div class="news-gallery__item">
     <a class="news-gallery__image" href="${web_url}">
     <div class="news-gallery__img-container"><img src="${imageURL}" 
-    alt="${keywordsMap}" loading="lazy"/></div>
+    alt="${keywordsMap}" loading="lazy" /><p class="news-gallery__img-container-label">${section}</p></div>
+    <button class="news-gallery__favorite-btn ><p clas="news-gallery__favorite-p"></p><svg class="news-gallery__favorite-svg" width="16" height="16"><use href="#icon-favorite"</svg></button>
     </a>
     <div class="news-gallery__info">
-      <p class="news-gallery__header">${headline}</p>
-      <p class="news-gallery__abstract">${abstract}</p>
+      <p class="news-gallery__title">${headline}</p>
+      <p class="news-gallery__text">${abstract}</p>
       <p class="news-gallery__pub_date">${pub_date}</p>
     </div>
     <a class="news-gallery__read-more" href="${web_url}">Read more...</a>
     </div>
+    <div class="overlay"></div>
+    </div>
+
         `;
 }
 
