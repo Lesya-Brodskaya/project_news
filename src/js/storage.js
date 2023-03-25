@@ -31,47 +31,27 @@
 //};
 const setLocalStorageItem = (key, value) => {
   try {
-    const dataToSave = JSON.stringify(value);
-    localStorage.setItem(key, dataToSave);
+    const datatoSave = JSON.stringify(value);
+    if (key) {
+      localStorage.setItem(key, datatoSave);
+    }
   } catch (error) {
-    console.error(`Error setting ${key} in local storage: ${error}`);
+    console.error('Error setting ${key} in local storage: ${error}')
   }
-    localStorage.setItem('readingNews');
 };
 
-
-function getReadingNewsFromStorage() {
-  return JSON.parse(localStorage.getItem('readingNews'));
-}
-
-function addReadingNewsToStorage(item) {
-  const addNews = item;
-  addNews.date = new Date().toLocaleDateString();
-  let readingNews = getReadingNewsFromStorage();
-
-  if (readingNews === null) {
-    readingNews = [addNews];
-  } else {
-    readingNews.push(addNews);
-  }
-  setLocalStorageItem('readingNews', readingNews);
-}
-
-function getReadingNewsDates() {
-  let readingNews = getReadingNewsFromStorage();
-  let arrDate = [];
-
-  for (let news of readingNews) {
-    if (!arrDate.includes(news.date)) {
-      arrDate.push(news.date);
+const getLocalStorageItem = key => {
+  try {
+    if (key) {
+      const datatoSave = localStorage.getItem(key);
+      return datatoSave ? JSON.parse(datatoSave) : [];
     }
+  } catch (error) {
+    console.error('Error getting ${key} from local storage: ${error}');
   }
-  return arrDate;
-}
+};
 
-function getNewsByDate(date) {
-  let readingNews = getReadingNewsFromStorage();
-  return readingNews.filter((news) => news.date === date);
+export {
+  getLocalStorageItem,
+  setLocalStorageItem
 }
-
-export { getNewsByDate , getReadingNewsFromStorage, getReadingNewsDates, addReadingNewsToStorage}
