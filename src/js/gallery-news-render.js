@@ -2,7 +2,7 @@ import { galleryFetch } from './galley-news-fetch';
 import { galleryFetchPopular } from './galley-news-fetch';
 import { startWeatherWidget } from './weather-widget';
 
-const searchForm = document.querySelector('.search-form');
+const searchForm = document.querySelector('.form-search');
 const newsGalleryLnk = document.querySelector('.news-gallery');
 
 let imageURL =
