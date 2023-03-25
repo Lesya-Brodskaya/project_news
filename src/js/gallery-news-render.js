@@ -16,8 +16,10 @@ let currentHits = 0;
 let globalSearchQuery = '';
 
 searchForm.addEventListener('submit', onSearchBtn);
+newsGalleryLnk.innerHTML = ''; 
+
 onLoadNewsPage();
-//startWeatherWidget();
+await startWeatherWidget();
 
 function onSearchBtn(e) { 
     e.preventDefault();
