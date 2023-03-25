@@ -206,18 +206,23 @@ let dropListCategNum = [];
 
 const categBtnWrapper = document.querySelector(".categories-btn-wrapper");
 const dropDownWrapper = document.querySelector('.drop-down-wrapper');
+
 // const dropDownList = document.querySelector('.drop-down-list');
+
 const otherSpan = document.querySelector('.others-span');
 const btnOther = document.querySelector('.categories-filter__other-btn');
 const arrowIconUp = document.querySelector('.svg-up-others-categories');
-// const sectionCategories = document.querySelector('.categories');
+const categoryContainer = document.querySelector('.categories__container');
+
+
+onWindowSizeChange();
 
 window.addEventListener('resize', onWindowSizeChange);
-categBtnWrapper.addEventListener('click', onButtonCategClick);
-btnOther.addEventListener('click', onOthersBtnClick);
 
-onWindowSizeChange(categories);
+// categBtnWrapper.addEventListener('click', onButtonCategClick);
 
+// btnOther.addEventListener('click', onOthersBtnClick);
+categoryContainer.addEventListener('click', onButtonCategClick);
 
 function onWindowSizeChange() {
   categBtnWrapper.innerHTML = "";
@@ -246,10 +251,10 @@ function onWindowSizeChange() {
 
       for (let i = 0; i <= categBtnNum.length; i += 1) {
         btnCategoryMarkup = categBtnNum.map(category => {
-          return `<div class = "btn-wrapper"><button class="filter-category__item-bt">${category.display_name}</button><div>`
+          return `<div class = "btn-wrapper"><button class="filter-category__item-bt category-btn">${category.display_name}</button><div>`
         }).join('');
         categBtnWrapper.innerHTML = btnCategoryMarkup;
-        console.log(categBtnWrapper);
+        // console.log(categBtnWrapper);
       };
 
       // for (let j = 5; j <= categBtnNum.length; i += 1) {
@@ -264,9 +269,9 @@ function onWindowSizeChange() {
         dropDownCategWrapper = dropCategories.map(category => {
                 return `<button class="drop-down-list-btn">${category.display_name}</button>`
               }).join('');
-              console.log(dropDownCategWrapper);
+              // console.log(dropDownCategWrapper);
               dropDownWrapper.innerHTML = dropDownCategWrapper;
-              console.log(dropDownWrapper);
+              // console.log(dropDownWrapper);
       return;
 
     } else if  (window.innerWidth >= 1280) {
@@ -275,17 +280,17 @@ function onWindowSizeChange() {
       let btnCategoryMarkup = [];
       for (let i = 0; i <= categBtnNum.length; i += 1) {
         btnCategoryMarkup = categBtnNum.map(category => {
-          return `<div class = "btn-wrapper"><button class="filter-category__item-bt">${category.display_name}</button><div>`
+          return `<div class = "btn-wrapper"><button class="filter-category__item-bt category-btn">${category.display_name}</button><div>`
         }).join('');
         categBtnWrapper.innerHTML = btnCategoryMarkup;
-        console.log(categBtnWrapper);
+        // console.log(categBtnWrapper);
     };
     dropCategories = categories.slice(6, 49);
         dropDownCategWrapper = dropCategories.map(category => {
       return `<button class="drop-down-list-btn">${category.display_name}</button>`
     }).join('');
     dropDownWrapper.innerHTML = dropDownCategWrapper;
-    console.log(dropDownWrapper);
+    // console.log(dropDownWrapper);
     return;
   }
 
@@ -295,21 +300,22 @@ function onButtonCategClick(e) {
   if(e.target.nodeName !== 'BUTTON') {
     return;
   }
-  // console.log(e.target);
-  const currentActBtn = document.querySelector('.filter-category__item-bt--active');
+  console.log(e.target);
+  const currentActBtn = document.querySelector('.category-btn--active');
   console.log(currentActBtn);
 
   if(currentActBtn) {
-    currentActBtn.classList.remove('filter-category__item-bt--active');
+    currentActBtn.classList.remove('category-btn--active');
   };
   
   const nextActBtn = e.target;
   console.log(nextActBtn);
-  nextActBtn.classList.add('filter-category__item-bt--active');
+  nextActBtn.classList.add('category-btn--active');
 }
 
 function onOthersBtnClick(e) {
   e.target.classList.toggle('active');
+  console.log(e.target);
   dropDownWrapper.classList.toggle('drop-down-wrapper--active');
 
 }
