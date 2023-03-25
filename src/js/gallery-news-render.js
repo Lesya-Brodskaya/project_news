@@ -121,6 +121,6 @@ function popularArticlesMarkup(dataResponse) {
       catch (e) { 
         console.log(e.message);
       }         
-      return newsCardMarcup(url, imgUrl, adx_keywords, title, abstract, updated);   
+      return newsCardMarkup(url, imgUrl, adx_keywords, title, abstract, updated);   
     }).join('');
 }
