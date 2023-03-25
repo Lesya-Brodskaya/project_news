@@ -2,10 +2,10 @@
 import { getLocalStorageItem, setLocalStorageItem } from "./storage";
 //import { newsCardMarkup } from "./gallery-news-render";
 //const markup = newsCardMarkup(web_url, imageURL, keywordsMap, headline, abstract, pub_date, section);
-const gallery = document.querySelector('.news-gallery__read-more')
+//const gallery = document.querySelector('.news-gallery__read-more')
 const NEW_KEY_READ = 'read';
 const KEY_COLLECTION = 'collection';
-gallery.addEventListener('click', markAsRead)
+//gallery.addEventListener('click', markAsRead)
 export function markAsRead (e) {
   if (!e.target.matches('.news-gallery__read-more')) return;
   
