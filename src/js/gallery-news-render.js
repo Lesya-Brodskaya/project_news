@@ -103,8 +103,10 @@ function newsCardMarkup(
       <p class="news-gallery__abstract">${abstract}</p>
       <p class="news-gallery__pub_date">${pub_date}</p>
     </div>
-    <a class="news-gallery__read-more" href="${web_url}">Read more...</a>
+    <a class="news-gallery__read-more" href="${web_url}">Read more...</a> 
+    <button type="button" class="news-gallery__fav">Add to favoirite</button>
     </div>
+
         `;
 }
 
