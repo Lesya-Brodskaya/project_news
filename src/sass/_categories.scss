@@ -4,6 +4,16 @@ ul {
 
 .drop-down-list-btn {
   display: block;
+  color: #4440F6;
+  border-color: transparent;
+  background-color: transparent;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.drop-down-list-btn:hover {
+  text-decoration: underline;
+  text-decoration-color: #4440F6;
 }
 
 .categories-btn-wrapper {
@@ -33,15 +43,18 @@ ul {
 
 }
 
-.categories-other-dropdown {
-  display: flex;
-}
-
 .drop-down-wrapper {
   display: none;
 }
 
 .drop-down-wrapper--active {
+  display: flex;
+  width: 148px;
+  max-height: 380px;
+  border-radius: 20px;
+  background-color: #F8F8F8;
+  text-align: left;
+  overflow: scroll;
   display: block;
 
 }
