@@ -44,7 +44,7 @@ async function operateDataBackEnd(searchQuery, searchPage) {
   }
 }
 
-async function renderData(articles) {
+export async function renderData(articles) {
   newsGalleryLnk.innerHTML = '';
   if (articles.length === 0) return;
   try {
