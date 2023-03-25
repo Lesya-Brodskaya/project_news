@@ -1,61 +1,69 @@
 const refs = {
-  buttonShowInput: document.querySelector('.show-search-input-btn'),
-  input: document.querySelector('.search-input'),
-  buttonSearch: document.querySelector('.search-btn'),
-  form: document.querySelector('.search-form'),
-  buttonClose: document.querySelector('.menu-close-btn'),
-  navigation: document.querySelector('.navigation'),
-  openMenuBtn: document.querySelector('.menu-open-btn'),
-  themeSwitcher: document.querySelector('.theme-switcher'),
-  formContainer: document.querySelector('.form-container'),
+  showFormBtn: document.querySelector('.form-open'),
+  form: document.querySelector('.form-search'),
+  navigation: document.querySelector('.menu'),
+  openMenuBtn: document.querySelector('.menu-open'),
+  closeMenuBtn: document.querySelector('.menu-close'),
   themeToggle: document.querySelector('#theme-toggle'),
   menu: document.querySelector('.menu'),
-  menuItemActive: document.querySelectorAll('.menu-item-active'),
+  themeSwitcher: document.querySelector('.theme-switcher'),
+  menuDesc: document.querySelector('.menu-desc'),
 };
-refs.buttonShowInput.addEventListener('click', buttonShowInputClick);
-refs.form.addEventListener('submit', onFormSubmit);
-refs.buttonClose.addEventListener('click', onCloseMenu);
+
+refs.showFormBtn.addEventListener('click', onShowFormClick);
+refs.closeMenuBtn.addEventListener('click', onCloseMenu);
 refs.openMenuBtn.addEventListener('click', onMenuOpen);
 refs.themeToggle.addEventListener('click', toggleTheme);
-refs.menu.addEventListener('click', onMenuItemClick);
+refs.menu.addEventListener('click', onMobileMenuItemClick);
+refs.menuDesc.addEventListener('click', onMenuDeskItemClick);
 
-function onMenuItemClick(event) {
+function onMobileMenuItemClick(event) {
   if (event.target.nodeName !== 'A') {
     return;
   }
   const menuItemActive = document.querySelector('.menu-item-active');
+
   if (menuItemActive) {
     menuItemActive.classList.remove('menu-item-active');
   }
-
   event.target.parentNode.classList.add('menu-item-active');
 }
 
-function onMenuOpen(event) {
-  refs.navigation.classList.remove('hide');
-  refs.buttonClose.classList.remove('hide');
-  refs.themeSwitcher.classList.remove('hide');
-  refs.formContainer.classList.add('hide');
+function onMenuDeskItemClick(event) {
+  if (event.target.nodeName !== 'A') {
+    return;
+  }
+  const menuItemActive = document.querySelector('.menu-desc-link--active');
+
+  if (menuItemActive) {
+    menuItemActive.classList.remove('menu-desc-link--active');
+  }
+  event.target.parentNode.classList.add('menu-desc-link--active');
 }
+
+function onMenuOpen(event) {
+  refs.form.style.display = 'none';
+  refs.openMenuBtn.style.display = 'none';
+  refs.closeMenuBtn.style.display = 'block';
+  refs.showFormBtn.style.display = 'none';
+  refs.navigation.style.display = 'block';
+  refs.themeSwitcher.style.display = 'block';
+}
+
 function onCloseMenu(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
-  refs.navigation.classList.add('hide');
-  refs.buttonClose.classList.add('hide');
-  refs.formContainer.classList.remove('hide');
+  refs.navigation.style.display = 'none';
+  refs.closeMenuBtn.style.display = 'none';
+  refs.openMenuBtn.style.display = 'block';
+  refs.showFormBtn.style.display = 'block';
+  refs.themeSwitcher.style.display = 'none';
 }
 
-function buttonShowInputClick(event) {
-  refs.input.classList.add('show');
-  refs.buttonShowInput.classList.add('hide');
-  refs.buttonSearch.classList.remove('hide');
-}
-
-function onFormSubmit(event) {
-  event.preventDefault();
-  const searchQuery = event.currentTarget.elements.search_input.value;
-  console.log(searchQuery);
+function onShowFormClick(event) {
+  refs.form.style.display = 'block';
+  refs.showFormBtn.style.display = 'none';
 }
 
 // for theme-switcher
