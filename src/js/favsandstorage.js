@@ -27,5 +27,5 @@ galleryLnk.addEventListener("Click", onFavBtnInCardClick);
 
 function onFavBtnInCardClick(e) { 
     //e.preventDefault();
-    console.log(e.target.message.value);
+    console.log(e.target);
 }
