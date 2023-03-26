@@ -232,7 +232,7 @@ function popularArticlesMarkup(dataResponse) {
         try {
           imgUrl = String(Object(media[0])['media-metadata'][2].url);
         } catch (e) {
-          console.log(e.message);
+          console.log("(nothing)",e.message);
         }
 
         return newsCardMarkup(
@@ -246,6 +246,5 @@ function popularArticlesMarkup(dataResponse) {
           published_date
         );
       }
-    )
-    .join('');
+    ).join('');
 }
