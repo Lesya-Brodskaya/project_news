@@ -59,7 +59,7 @@ export async function renderData(articles) {
 }
 
 // читання масив статей, як об'єктів, витягування їх параметрів для випадку пошуку по параметрах
-async function readDataArrayToMarcup(articlesArray) {
+export async function readDataArrayToMarcup(articlesArray) {
   //      <!--p class="news-gallery__snippet">${snippet}</p-->
   return await articlesArray
     .map(
@@ -116,7 +116,7 @@ async function readDataArrayToMarcup(articlesArray) {
 }
 
 //Уніфікована розмітка однієї картки новини
-function newsCardMarkup(
+export function newsCardMarkup(
   web_url,
   imageURL,
   keywordsMap,
