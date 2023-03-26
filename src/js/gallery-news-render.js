@@ -96,7 +96,7 @@ function newsCardMarkup(
 ) {
   if (!imageURL) {
     imageURL =
-      'https://img.freepik.com/premium-vector/404-error-web-page-template-with-cute-cat_540634-1.jpg?w=2000';
+      'https://www.politico.com/dims4/default/b07a49c/2147483647/strip/true/crop/1160x773+0+0/resize/1290x860!/format/webp/quality/90/?url=https%3A%2F%2Fstatic.politico.com%2F8c%2F18%2F7fb9b88e4e588a4cc84bb8da9bbf%2F200613-nyt-getty-773.jpg';
   }
   return `
     <div class="news-gallery__item">
