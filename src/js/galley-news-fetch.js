@@ -15,13 +15,13 @@ let PER_PAGE = 40;
 // Доступ до бекенду за пошуком.
 export async function galleryFetch(queryLine, currentPage) {
     let queryURL = `${BASE_URL}${queryLine}&api-key=${KEY}`;
-    return accessFetch(queryURL);
+    return (accessFetch(queryURL)).response;
 }
 
 // Доступ до бекенду "популярних"
 export async function galleryFetchPopular(currentPage) {
     let queryURL = BASE_POPULAR_URL;
-    return accessFetch(queryURL);
+    return (accessFetch(queryURL)).results;
 }
 
 // Доступ до новин за категоріями
@@ -34,9 +34,35 @@ export async function galleryFetchCategories(currentPage) {
 async function accessFetch(queryURL) { 
       try {
     let response = await axios.get(queryURL);
-    return response.data.results;
+    return response.data;
   } catch (e) {
     console.log(e.message);
   }
 }
 
+/*
+export async function galleryFetch(queryLine, currentPage) { 
+
+    try {
+        let response = await axios.get(`${BASE_URL}${queryLine}&api-key=${KEY}`);
+
+        return response.data.response;
+    }
+    catch (e) { 
+        console.log(e.message);
+    }
+
+}
+
+export async function galleryFetchPopular(currentPage) { 
+
+    try {
+        let response = await axios.get(BASE_POPULAR_URL);
+        return response.data.results;
+    }
+    catch (e) { 
+        console.log(e.message);
+    }
+
+}
+*/
