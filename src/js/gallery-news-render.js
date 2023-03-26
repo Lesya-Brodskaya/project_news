@@ -108,7 +108,7 @@ export async function readDataArrayToMarcup(articlesArray) {
         //   headline.main,
         //   abstract,
         //   pub_date
-        // );
+        // );      
       }
     )
     .join('');
@@ -217,4 +217,4 @@ function popularArticlesMarkup(dataResponse) {
       }
     ).join('');
 }
-//Уніфікована розмітка однієї картки новини
+

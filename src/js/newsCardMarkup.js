@@ -1,3 +1,4 @@
+//Уніфікована розмітка однієї картки новини
 export function newsCardMarkup(
   web_url,
   imageURL,
