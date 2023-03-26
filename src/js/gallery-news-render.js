@@ -106,7 +106,7 @@ function newsCardMarkup(
     <div class="news-gallery__info">
       <h2 class="news-gallery__title">${headline}</h2>
       <div class ="wrapper">
-      <p class="news-gallery__text">${abstract}</p>
+      <p class="news-gallery__text">${abstract.substring(0, 110) + '...'}</p>
       </div>
       <div class="news-gallery__more">
       <p class="news-gallery__pub_date">${published_date}</p>
