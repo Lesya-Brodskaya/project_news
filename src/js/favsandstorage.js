@@ -19,7 +19,7 @@ const STORAGE_KEY = "card-array";
 
 const cardFavBtnLnk = document.querySelector('.news-gallery__favorite-btn');
 
-//cardFavBtnLnk.addEventListener("Click", onFavBtnClick);
+//cardFavBtnLnk.addEventListener("click", onFavBtnClick);
 
 const galleryLnk = document.querySelector(".news-gallery");
 

@@ -131,7 +131,7 @@ async function onLoadNewsPage() {
       popularArticlesMarkup(dataResponse)
     );
     const gallery = document.body.querySelector('.news-gallery__read-more');
-    //gallery.addEventListener('click', markAsRead);
+
     gallery.addEventListener('click', markAsRead);
     
     function markAsRead(e) {
