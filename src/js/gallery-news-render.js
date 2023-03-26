@@ -2,6 +2,7 @@ import { galleryFetch } from './galley-news-fetch';
 import { galleryFetchPopular } from './galley-news-fetch';
 import { startWeatherWidget } from './weather-widget';
 import { getLocalStorageItem, setLocalStorageItem } from './storage';
+import format from 'date-fns/format';
 
 const searchForm = document.querySelector('.form-search');
 const newsGalleryLnk = document.querySelector('.news-gallery');
@@ -51,14 +52,14 @@ export async function renderData(articles) {
   newsGalleryLnk.innerHTML = '';
   if (articles.length === 0) return;
 
-    const galleryMurkup = await readDataArrayToMarcup(articles); // Передача масиву в функцію, що формує розмітку
+    const galleryMurkup = readDataArrayToMarcup(articles); // Передача масиву в функцію, що формує розмітку
     newsGalleryLnk.insertAdjacentHTML('beforeend', galleryMurkup);
 
 }
 
 export async function readDataArrayToMarcup(articlesArray) {
   
-  return await articlesArray
+  return articlesArray
     .map(
       ({
         abstract,
