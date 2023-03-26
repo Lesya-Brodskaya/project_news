@@ -136,12 +136,12 @@
 
 .news-gallery__title {
   margin-top: 20px;
-  height: 132px;
     font-weight: 700;
     font-size: 24px;
     line-height: 33px;
     letter-spacing: -0.01em;
     @media screen and (min-width: 768px) {
+      height: 132px;
       font-weight: 700;
         font-size: 32px;
         line-height: 44px;
