@@ -9,7 +9,7 @@
   published_date
 ) */
 //.news-gallery__favorite-btn
-import { newsCardMarkup } from './gallery-news-render';
+import { newsCardMarkup } from './newsCardMarkup';
 import { readDataArrayToMarcup } from './gallery-news-render';
 
 import { setLocalStorageItem } from './storage';
@@ -19,7 +19,7 @@ const STORAGE_KEY = "card-array";
 
 const cardFavBtnLnk = document.querySelector('.news-gallery__favorite-btn');
 
-//cardFavBtnLnk.addEventListener("Click", onFavBtnClick);
+//cardFavBtnLnk.addEventListener("click", onFavBtnClick);
 
 const galleryLnk = document.querySelector(".news-gallery");
 
