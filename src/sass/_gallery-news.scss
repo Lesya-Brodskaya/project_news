@@ -1,15 +1,18 @@
 .news-gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 28px;
   align-items: center;
   width: 100%;
   font-family: 'Manrope';
     font-style: normal;
-    @media screen and (min-width: 768px
-    ) {
-      
+    @media screen and (min-width: 768px) {
+      gap: 30px;
     }
+        @media screen and (min-width: 1280px){
+          gap: 31px;
+        }
+  
   // використовувати в коді: @include for-size-mobile ($width-desktop){використання інших стилів};
   /*
         $width-mobile: 320px;
@@ -62,6 +65,9 @@
     width: 353px;
     height: 675px;
   }
+    @media screen and (min-width: 1280px) {
+      width: 395px;
+    }
 }
 
 .news-gallery__img-container {
@@ -76,6 +82,9 @@
     @media screen and (min-width: 768px) {
       width: 353px;
     }
+        @media screen and (min-width: 1280px) {
+          width: 395px;
+        }
 }
 
 .news-gallery__img-container-label {
@@ -127,15 +136,29 @@
 
 .news-gallery__title {
   margin-top: 20px;
+  height: 132px;
     font-weight: 700;
     font-size: 24px;
     line-height: 33px;
     letter-spacing: -0.01em;
+    @media screen and (min-width: 768px) {
+      font-weight: 700;
+        font-size: 32px;
+        line-height: 44px;
+        letter-spacing: -0.01em;
+        overflow: hidden;
+    }
 }
 
 .wrapper {
   margin-top: 20px;
   max-width: 287px;
+  @media screen and (min-width: 768px) {
+   max-width: 351px;
+  }
+    @media screen and (min-width: 1280px){
+      max-width: 351px;
+    }
 }
 
  .news-gallery__text {
@@ -145,6 +168,9 @@
     -webkit-box-orient: vertical;
     font-size: 14px;
     line-height: 19px;
+    @media screen and (min-width: 768px) {
+      height: 66px;
+    }
  }
 
  .news-gallery__more {
