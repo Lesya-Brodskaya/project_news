@@ -9,7 +9,7 @@
   published_date
 ) */
 //.news-gallery__favorite-btn
-import { newsCardMarkup } from './gallery-news-render';
+import { newsCardMarkup } from './newsCardMarkup';
 import { readDataArrayToMarcup } from './gallery-news-render';
 
 import { setLocalStorageItem } from './storage';
