@@ -11,29 +11,23 @@ const BASE_POPULAR_URL = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.js
 
 let PER_PAGE = 40;
 
-export async function galleryFetch(queryLine, currentPage) { 
+export async function galleryFetch(queryLine, currentPage) {
+  try {
+    let response = await axios.get(`${BASE_URL}${queryLine}&api-key=${KEY}`);
 
-    try {
-        let response = await axios.get(`${BASE_URL}${queryLine}&api-key=${KEY}`);
-
-        return response.data.response;
-    }
-    catch (e) { 
-        console.log(e.message);
-    }
-
+    return response.data.response;
+  } catch (e) {
+    console.log(e.message);
+  }
 }
 
-export async function galleryFetchPopular(currentPage) { 
-
-    try {
-        let response = await axios.get(BASE_POPULAR_URL);
-        return response.data.results;
-    }
-    catch (e) { 
-        console.log(e.message);
-    }
-
+export async function galleryFetchPopular(currentPage) {
+  try {
+    let response = await axios.get(BASE_POPULAR_URL);
+    return response.data.results;
+  } catch (e) {
+    console.log(e.message);
+  }
 }
 /*
 export async function galleryFetchCategories(currentPage) { 
