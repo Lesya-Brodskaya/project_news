@@ -1,9 +1,12 @@
 import { galleryFetch } from './galley-news-fetch';
 import { galleryFetchPopular } from './galley-news-fetch';
 import { startWeatherWidget } from './weather-widget';
+import { getLocalStorageItem, setLocalStorageItem } from "./storage";
 
 const searchForm = document.querySelector('.form-search');
 const newsGalleryLnk = document.querySelector('.news-gallery');
+const NEW_KEY_READ = 'read';
+const KEY_COLLECTION = 'collection';
 
 let imageURL =
   'https://www.nytimes.com/images/2015/03/14/arts/16iht-rartsquare-2/16iht-rartsquare-2-watch308.jpg';
@@ -12,6 +15,7 @@ const nytURL = 'https://www.nytimes.com/';
 let currentPage = 1;
 let currentHits = 0;
 let globalSearchQuery = '';
+
 
 searchForm.addEventListener('submit', onSearchBtn);
 newsGalleryLnk.innerHTML = '';
@@ -127,6 +131,33 @@ async function onLoadNewsPage() {
       'beforeend',
       popularArticlesMarkup(dataResponse)
     );
+    const gallery = document.body.querySelector('.news-gallery__read-more');
+    //gallery.addEventListener('click', markAsRead);
+    gallery.addEventListener('click', markAsRead);
+    function markAsRead(e) {
+      if (!e.target.matches('.news-gallery__read-more')) return;
+  
+      let card = e.target.closest('.news-gallery__item');
+      if (!card) return;
+      let id = card.web_url;;
+      let readItems = getLocalStorageItem(NEW_KEY_READ) || [];
+      let date = format(Date.now(), 'MM/dd/yyyy');
+
+      if (readItems.some(obj => obj.date === date && obj.collection.some(card => card.id === id))) {
+        return;
+      }
+
+      const readCard = getLocalStorageItem(KEY_COLLECTION).find(obj => obj.id === id);
+  
+      if (readItems.some(obj => obj.date === date)) {
+        const obj = readItems.find(obj => obj.date === date);
+        obj.collection.push(readCard);
+        setLocalStorageItem(NEW_KEY_READ, readItems.sort((objA, objB) => new Date(objB.date) - new Date(objA.date)));
+      } else {
+        readItems.push({ date: date, collection: [readCard] });
+        setLocalStorageItem(NEW_KEY_READ, readItems.sort((objA, objB) => new Date(objB.date) - new Date(objA.date)));
+      }
+    }
   } catch (e) {
     console.log(e.message);
   }
