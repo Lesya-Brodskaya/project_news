@@ -50,7 +50,7 @@
 .item-news__category {
   position: absolute;
   display: flex;
-  cursor: url(../images/cursor-hand.svg), pointer;
+  cursor: pointer;
   min-width: 96px;
   height: auto;
   padding: 4px 14px;
