@@ -19,7 +19,7 @@ refs.listButtons.addEventListener('click', () => {
 
 let selectedCategory = '';
 let selectedCategoryEl;
-
+let windowWidth;
 let currentNumberCategories = 0;
 let outsideCategories = 0;
 
