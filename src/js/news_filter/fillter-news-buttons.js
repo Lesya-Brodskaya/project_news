@@ -22,8 +22,6 @@ let selectedCategoryEl;
 
 let currentNumberCategories = 0;
 let outsideCategories = 0;
-let windowWidth = 0;
-let wetherPosition = 0;
 
 getCategoryRender();
 
@@ -150,9 +148,6 @@ function onClickCategory(evt) {
   document
     .querySelector('.page-container-cat')
     .classList.remove('pagination-cat-hidden');
-  //   document
-  //     .querySelector('.paginator_search')
-  //     .classList.add('pagination-search-hidden');
 }
 function renderMarkupCategory(
   categoryList,
@@ -165,8 +160,7 @@ function renderMarkupCategory(
 
   const listEl = document.createElement('ul');
   listEl.classList.add('filter-category__list');
-  // Разметка:
-  /* <ul class="filter-category__list"></ul> */
+
   catigorysOutsideArray.map(({ display_name }, index) =>
     changeCategoryName(display_name, index)
   );
@@ -193,11 +187,6 @@ function createMarkupOtherCategory(category, listEl) {
   itemEl.append(buttonEl);
 
   listEl.append(itemEl);
-
-  // Разметка:
-  // <li class="filter-category__item">
-  //     <button class="filter-category__button">{ Category name}</button>
-  // </li>
 }
 
 function onClickOther(evt) {
@@ -219,5 +208,3 @@ function onClickListNews(evt) {
     .querySelector('.page-container-cat')
     .classList.remove('pagination-cat-hidden');
 }
-
-// ===========================================================================

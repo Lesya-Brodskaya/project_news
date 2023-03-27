@@ -48,12 +48,12 @@ async function fetchWeatherByGeo(city) {
     console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
+    //  console.log(error);
   }
 }
 
 async function renderWeater() {
-  const data = await fetchWeather();
+  const data = await fetchWeather(currentCity);
   const { feels_like } = data.main;
   const weather = data.weather[0];
   const { icon } = data.weather[0];
