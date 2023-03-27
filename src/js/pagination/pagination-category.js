@@ -1,8 +1,6 @@
 const pg = document.getElementById('pagination-cat');
 const btnNextPg = document.querySelector('button.next-page-cat');
 const btnPrevPg = document.querySelector('button.prev-page-cat');
-// const btnFirstPg = document.querySelector('button.first-page');
-// const btnLastPg = document.querySelector('button.last-page');
 
 const valuePage = {
   curPage: 1,
@@ -98,31 +96,25 @@ function handleButton(element) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
-    //  btnLastPg.disabled = false;
   } else if (element.classList.contains('next-page-cat')) {
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
-    //  btnFirstPg.disabled = false;
   }
   pagination();
 }
 function handleButtonLeft() {
   if (valuePage.curPage === 1) {
     btnPrevPg.disabled = true;
-    //  btnFirstPg.disabled = true;
   } else {
     btnPrevPg.disabled = false;
-    //  btnFirstPg.disabled = false;
   }
 }
 function handleButtonRight() {
   if (valuePage.curPage === valuePage.totalPages) {
     console.log(valuePage.curPage);
     btnNextPg.disabled = true;
-    //  btnLastPg.disabled = true;
   } else {
     btnNextPg.disabled = false;
-    //  btnLastPg.disabled = false;
   }
 }

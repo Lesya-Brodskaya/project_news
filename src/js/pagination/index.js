@@ -1,28 +1,23 @@
-import { deleteItems, firstItems, checkLokalStorage } from '../markup';
-import { getWeatherRefs } from '../weather';
+import { deleteItems, checkLokalStorage } from '../markup';
 import { getWetherPosition, getPopularRender } from '../popular_render';
 const pg = document.getElementById('pagination');
 const btnNextPg = document.querySelector('button.next-page');
 const btnPrevPg = document.querySelector('button.prev-page');
 const newsList = document.querySelector('.list-news');
-// const btnFirstPg = document.querySelector('button.first-page');
-// const btnLastPg = document.querySelector('button.last-page');
-let windowWidth = 0;
-let wetherPosition = 0;
-let uptadeDeleteItems;
-setTimeout(() => {
-  uptadeDeleteItems = deleteItems.slice(8);
-  // firstMarkup = firstItems;
-}, 1500);
-let sliceItems;
 const refs = {
   pagination: document.querySelector('.pagin'),
 };
-// console.log(refs.pagination);
+
+let windowWidth = 0;
+let wetherPosition = 0;
+let uptadeDeleteItems;
+let sliceItems;
+
+setTimeout(() => {
+  uptadeDeleteItems = deleteItems.slice(8);
+}, 1500);
 
 refs.pagination.addEventListener('click', e => {
-  // let btn = valuePage.curPage;
-
   if (
     e.target.classList.contains('next-page') ||
     e.target.classList.contains('btn-next')
@@ -55,12 +50,12 @@ refs.pagination.addEventListener('click', e => {
     case 2:
       sliceItems = deleteItems.slice(0, 8);
       uptadeDeleteItems = deleteItems.slice(8);
-      // console.log(sliceItems);
+
       const markup2 = render(sliceItems, windowWidth);
-      // console.log(markup2);
+
       newsList.innerHTML = markup2;
       getWetherPosition();
-      // getRender(sliceItems);
+
       break;
     case 3:
       const markup3 = render(uptadeDeleteItems, windowWidth);
@@ -69,20 +64,11 @@ refs.pagination.addEventListener('click', e => {
       break;
   }
   window.scrollTo(0, 0);
-  //   if (btn === 3) {
-
-  //   }
-  //   classList.contains('pg-item')
-  //   console.log(btn);
-  //   console.log(btn.textValue);
-  //   if (btn.textValue === 3) console.log('done');
 });
 
 function render(data, number) {
-  // console.log(data);
-  // console.log(number);
   let filtredArr = getFiltredArr(data, number);
-  //   console.log(filtredArr);
+
   return filtredArr
     .map(elem => {
       let opacity = '';
@@ -147,7 +133,6 @@ function render(data, number) {
 }
 
 function getFiltredArr(value, number) {
-  // deleteItems = value.slice(number);
   return value.slice(0, number);
 }
 
@@ -179,7 +164,6 @@ pg.addEventListener('click', e => {
 
     valuePage.curPage = pageNumber;
     pagination(valuePage);
-    //  console.log(valuePage);
     handleButtonLeft();
     handleButtonRight();
   }
@@ -226,7 +210,6 @@ function pagination() {
         }
       }
     } else {
-      // not truncate
       render += renderPage(pos, active);
     }
   }
@@ -257,31 +240,24 @@ function handleButton(element) {
     valuePage.curPage--;
     handleButtonLeft();
     btnNextPg.disabled = false;
-    //  btnLastPg.disabled = false;
   } else if (element.classList.contains('next-page')) {
     valuePage.curPage++;
     handleButtonRight();
     btnPrevPg.disabled = false;
-    //  btnFirstPg.disabled = false;
   }
   pagination();
 }
 function handleButtonLeft() {
   if (valuePage.curPage === 1) {
     btnPrevPg.disabled = true;
-    //  btnFirstPg.disabled = true;
   } else {
     btnPrevPg.disabled = false;
-    //  btnFirstPg.disabled = false;
   }
 }
 function handleButtonRight() {
   if (valuePage.curPage === valuePage.totalPages) {
-    //  console.log(valuePage.curPage);
     btnNextPg.disabled = true;
-    //  btnLastPg.disabled = true;
   } else {
     btnNextPg.disabled = false;
-    //  btnLastPg.disabled = false;
   }
 }

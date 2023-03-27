@@ -7,10 +7,6 @@ let date = new Date(),
   currDay = date.getDate(),
   currMonth = date.getMonth(),
   currYear = date.getFullYear();
-// function showCurrentDate() {
-//   let value1 = currYear + '-' + (currMonth + 1) + '-' + currDay;
-//   document.getElementById('input-picker').value = value1;
-// }
 
 //активні кнопки та модульний календар
 (() => {
@@ -25,15 +21,12 @@ let date = new Date(),
 
   refs.openModalBtn.addEventListener('click', toggleModal);
   document.addEventListener('click', hideModals);
-  //   function cleanInput() {
-  //     refs.input.classList.remove('isActive');
-  //   }
+
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden-wrapper');
     refs.input.classList.toggle('isActive');
     refs.arrow.classList.toggle('switched');
     refs.calendarBtn.classList.toggle('switchedColor');
-    // showCurrentDate();
   }
 
   function hideModals(evt) {
@@ -97,22 +90,11 @@ const renderCalendar = number => {
   }
   currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
   daysTag.innerHTML = liTag;
-  // console.log(liTag);
   const dayChange = document.querySelector('.days');
-  // function addChangingDayListener() {
 
   dayChange.addEventListener('click', evt => {
-    //evt.preventDefault();
-    // evt.target.classList.toggle('active');
-
-    //     function hideButton() {
-    //       if (showButton() && evt.target.contains('active')) {
-    //         // evt.target.classList.remove('active');
-    //       }
-    //     }
     [...evt.currentTarget.children].forEach(item => {
       item.classList.remove('active');
-      //console.log(item.textContent);
     });
 
     evt.target.classList.add('active');
@@ -131,7 +113,6 @@ const renderCalendar = number => {
     localStorage.setItem('VALUE', JSON.stringify(newValueDay));
 
     let inputDateValue = document.querySelector('.calendar-input').value;
-    // console.log(inputDateValue);
     localStorage.setItem('date', JSON.stringify(inputDateValue));
     document.querySelector('[data-modal]').classList.add('is-hidden-wrapper');
     document.querySelector('.calendar-input').classList.remove('isActive');
@@ -147,7 +128,6 @@ const renderCalendar = number => {
 
 renderCalendar();
 let findUl = document.querySelector('.days');
-// inputDateValue = document.querySelector('.calendar-input').value;
 
 prevNextIcon.forEach(icon => {
   // getting prev and next icons
@@ -167,10 +147,9 @@ prevNextIcon.forEach(icon => {
     renderCalendar(); // calling renderCalendar function
     let test = JSON.parse(localStorage.getItem('VALUE'));
     let reachUl = daysTag.childNodes;
-    //console.log(reachUl);
+
     reachUl.forEach(elem => {
       if (elem.textContent === test) {
-        // console.log(elem.textContent);
         elem.classList.add('active');
       }
     });

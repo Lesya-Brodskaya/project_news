@@ -47,5 +47,3 @@ function addReadMore(readMore) {
   readMoreId.push(read);
   localStorage.setItem(`readMoreLocal`, JSON.stringify(readMoreId));
 }
-
-// export {checkLokalStorage}

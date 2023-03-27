@@ -2,18 +2,15 @@
 const pg = document.getElementById('pagination-search');
 const btnNextPg = document.querySelector('button.next-page-search');
 const btnPrevPg = document.querySelector('button.prev-page-search');
-// const btnFirstPg = document.querySelector('button.first-page');
-// const btnLastPg = document.querySelector('button.last-page');
-// let page = 1;
-// let sumPages;
+const paginationSearch = document.querySelector('.pagin-search');
+const load = document.querySelector('.news-loader__container.container');
+
 let valuePage;
 let refs;
 let dataSource;
 let render;
 let getWetherPosition;
 
-const paginationSearch = document.querySelector('.pagin-search');
-const load = document.querySelector('.news-loader__container.container');
 paginationSearch.addEventListener('click', onClickPAgination);
 
 async function onClickPAgination(e) {
@@ -74,19 +71,6 @@ async function onClickPAgination(e) {
   getWetherPosition();
 }
 
-// async function fetchByPagination(value, page) {
-//   const articleFetch = await fetch(
-//     `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${value}&api-key=eQ8t8FWqeAGnKDTtIFrHmgZCflFrUTcV&page=${page}`
-//   );
-//   const articles = await articleFetch.json();
-//   let { response } = articles;
-//   //   console.log(response.meta.hits);
-//   let { docs } = response;
-//   //   console.log(docs);
-
-//   return docs;
-// }
-
 pg.addEventListener('click', e => {
   const ele = e.target;
 
@@ -95,7 +79,6 @@ pg.addEventListener('click', e => {
 
     valuePage.curPage = pageNumber;
     pagination(valuePage);
-    // console.log(valuePage);
     handleButtonLeft();
     handleButtonRight();
   }

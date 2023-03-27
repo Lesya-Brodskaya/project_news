@@ -6,7 +6,7 @@ import { getWeatherRefs } from '../weather';
 
 let windowWidth = 0;
 let wetherPosition = 0;
-// console.log(window.innerWidth);
+
 window.addEventListener(
   'resize',
   debounce(e => {
@@ -33,7 +33,7 @@ async function getPopularRender() {
     wetherPosition = 1;
   }
   const popularArticle = await api.getPopularArticle();
-  // console.log(popularArticle);
+
   let markupArr = await markup.getPopularMarkup(popularArticle, windowWidth);
   refs.loader.classList.add('is-hidden');
   getRender(markupArr);
@@ -43,7 +43,6 @@ getPopularRender();
 async function getRender(value) {
   refs.newsList.innerHTML = value;
   getWetherPosition();
-  // return aaa;
 }
 
 function getWetherPosition() {
@@ -86,7 +85,6 @@ function getWetherPosition() {
     wetherPlaceDesk.after(secondElInList);
   } else {
     wetherPlaceDesk = document.querySelector('.list-news').children[0];
-    //  console.log(wetherPlaceDesk);
     secondElInList = document.createElement('li');
     secondElInList.classList.add('list-news__item');
     secondElInList.innerHTML = `<div class="weather">
@@ -120,9 +118,7 @@ function getWetherPosition() {
     wetherPlaceDesk.before(secondElInList);
   }
 
-  // console.log(secondElInList);
   getWeatherRefs();
-  // return secondElInList;
 }
 
 export { getWetherPosition, getRender, getPopularRender };

@@ -1,5 +1,4 @@
 import { getCategoryList } from '../api/index';
-import debounce from 'lodash.debounce';
 import { renderByCategory } from './render-by-category';
 
 const refs = {

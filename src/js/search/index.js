@@ -35,7 +35,7 @@ async function test(e) {
   const value = refs.input.value;
   refs.loader.classList.remove('is-hidden');
   const data = await getSearchArticle(value, page);
-  // console.log(data);
+
   if (data.length === 0) {
     refs.paginator_search.classList.add('pagination-search-hidden');
   }
@@ -43,20 +43,8 @@ async function test(e) {
 
   initPagination(valuePage, refs, getSearchArticle, render, getWetherPosition);
   pagination();
-  //   for (const obj of data) {
-  //     const mediaElem = obj.multimedia;
-  //     // console.log(mediaElem.length);
-  //     //  if (mediaElem.length === 0) {
-  //     //    refs.newsList.innerHTML = '';
-  //     //    refs.pagination.classList.add('pagination-hidden');
-  //     //    //  refs.weather.classList.add('weather-hidden');
-  //     //    refs.errorMarkup.classList.remove('underfined-hidden');
-  //     //    return;
-  //     //  }
-  //   }
 
   refs.errorMarkup.classList.add('underfined-hidden');
-  //   refs.weather.classList.remove('weather-hidden');
   refs.loader.classList.add('is-hidden');
   refs.pagination.classList.remove('pagination-hidden');
   document
@@ -76,14 +64,12 @@ async function test(e) {
   }
   const markup = render(data, windowWidth);
   if (value === '') {
-    //  console.log('empte');
     swal('Ooops..', 'Please enter something', 'info');
     return;
   }
   if (data.length === 0) {
     refs.newsList.innerHTML = '';
     refs.pagination.classList.add('pagination-hidden');
-    //  refs.weather.classList.add('weather-hidden');
     refs.errorMarkup.classList.remove('underfined-hidden');
     return;
   }
@@ -95,7 +81,6 @@ async function test(e) {
 
 function render(data, number) {
   let filtredArr = getFiltredArr(data, number);
-  //   console.log(filtredArr);
   return filtredArr
     .map(elem => {
       let opacity = '';
@@ -209,7 +194,6 @@ function getWetherPosition() {
     wetherPlaceDesk.after(secondElInList);
   } else {
     wetherPlaceDesk = document.querySelector('.list-news').children[0];
-    //  console.log(wetherPlaceDesk);
     secondElInList = document.createElement('li');
     secondElInList.classList.add('list-news__item');
     secondElInList.innerHTML = `<div class="weather">
@@ -243,7 +227,5 @@ function getWetherPosition() {
     wetherPlaceDesk.before(secondElInList);
   }
 
-  // console.log(secondElInList);
   getWeatherRefs();
-  // return secondElInList;
 }
