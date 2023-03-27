@@ -70,8 +70,8 @@ async function getArticleByCategory(value) {
 
     // console.log(results);
     return results;
-  } catch (error) {
-    // console.log('pizdec');
+  } catch (e) {
+    console.log(e.message);
   }
 }
 
