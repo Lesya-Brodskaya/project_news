@@ -1,5 +1,5 @@
+import Notiflix from 'notiflix';
 import * as newsRender from '../api/index.js';
-
 
 const SEARCH_URL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?';
 const axios = require('axios').default;
@@ -7,26 +7,23 @@ const newsDate = document.querySelector('#input-picker');
 const daysTag = document.querySelector('.days'),
   currentDate = document.querySelector('.current-date'),
   prevNextIcon = document.querySelectorAll('.calendar-icons span');
+const searchEl = document.querySelector('.search-field input');
 
-newsDate.addEventListener("change", async (event) => {
+newsDate.addEventListener('change', async event => {
   // const searchDate = moment(event.detail.date).format("YYYY-MM-DD");
   const searchDate = newsDate.value.replace(/\//g, '-');
-  const articl = await galleryFetch("", 0, `pub_date: ${searchDate}`)
-  console.log(articl)
-})
-export async function galleryFetch(queryLine, currentPage, fq) { 
+  const articl = await galleryFetch('', 0, `pub_date: ${searchDate}`);
+  // console.log(articl)
+});
+export async function galleryFetch(queryLine, currentPage, fq) {
+  try {
+    let response = await axios.get(`${SEARCH_URL}&fq=${fq}&${newsRender.KEY}`);
 
-    try {
-        let response = await axios.get(`${SEARCH_URL}&fq=${fq}&${newsRender.KEY}`);
-
-        return response.data.response;
-    }
-    catch (e) { 
-        console.log(e.message);
-    }
-
+    return response.data.response;
+  } catch (e) {
+    console.log(e.message);
+  }
 }
-
 
 // getting new date, current year and month
 let date = new Date(),
@@ -34,7 +31,7 @@ let date = new Date(),
   currMonth = date.getMonth(),
   currYear = date.getFullYear();
 
-//активні кнопки та модульний календар
+//активні кнопкиs та модульний календар
 (() => {
   const refs = {
     openModalBtn: document.querySelector('[data-modal-open]'),
@@ -47,8 +44,13 @@ let date = new Date(),
 
   refs.openModalBtn.addEventListener('click', toggleModal);
   document.addEventListener('click', hideModals);
-
+  newsDate.disabled = true;
   function toggleModal() {
+    if (searchEl.value.trim() === '') {
+      Notiflix.Notify.info('Please fill in the 📰 search field first.');
+      return;
+    }
+    newsDate.disabled = false;
     refs.modal.classList.toggle('is-hidden-wrapper');
     refs.input.classList.toggle('isActive');
     refs.arrow.classList.toggle('switched');
@@ -135,7 +137,7 @@ const renderCalendar = number => {
       month.padStart(2, '0') +
       '/' +
       newValueDay.padStart(2, '0');
-    document.getElementById('input-picker').dispatchEvent(new Event('change'))
+    document.getElementById('input-picker').dispatchEvent(new Event('change'));
 
     localStorage.setItem('VALUE', JSON.stringify(newValueDay));
 

@@ -71,7 +71,7 @@ async function getArticleByCategory(value, date) {
     // console.log(results);
     return results;
   } catch (e) {
-    console.log(e.message);
+    // console.log(e.message);
   }
 }
 
