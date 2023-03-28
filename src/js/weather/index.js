@@ -3,19 +3,6 @@ const WEATHER_KEY = 'c6d27dc8c63eae4b1bf25b80583f432d';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 let currentCity;
 let refs = {};
-function getWeatherRefs() {
-  //   console.log('refs');
-  refs = {
-    degs: document.querySelector('.weather__deg'),
-    weather: document.querySelector('.weather__value'),
-    city: document.querySelector('.weather__city'),
-    day: document.querySelector('.weather__day'),
-    year: document.querySelector('.weather__year'),
-    img: document.querySelector('.weather__img'),
-  };
-  renderWeater();
-  return refs;
-}
 
 getUserGeolocation();
 
@@ -26,7 +13,7 @@ async function getUserGeolocation() {
   return currentCity;
 }
 
-async function fetchWeather(currentCity) {
+async function fetchWeather() {
   const url = `${BASE_URL}q=${currentCity}&units=metric&appid=${WEATHER_KEY}`;
   try {
     const response = await fetch(url);
@@ -51,7 +38,7 @@ async function fetchWeather(currentCity) {
 // }
 
 async function renderWeater() {
-  const data = await fetchWeather(currentCity);
+  const data = await fetchWeather();
   const { feels_like } = data.main;
   const weather = data.weather[0];
   const { icon } = data.weather[0];
@@ -86,7 +73,21 @@ async function renderWeater() {
 //     });
 //   }
 // }
-
+function getWeatherRefs() {
+  //   console.log('refs');
+  refs = {
+    degs: document.querySelector('.weather__deg'),
+    weather: document.querySelector('.weather__value'),
+    city: document.querySelector('.weather__city'),
+    day: document.querySelector('.weather__day'),
+    year: document.querySelector('.weather__year'),
+    img: document.querySelector('.weather__img'),
+  };
+  setTimeout(function runWeather() {
+    renderWeater();
+  }, 500);
+  return refs;
+}
 // getGeoposition();
 
 export { getWeatherRefs };
