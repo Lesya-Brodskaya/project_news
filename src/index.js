@@ -1,7 +1,6 @@
 import './js/popular_render';
-// import './js/news_filter/fillter-news-buttons';
-import './js/news_filter/categories';
-// import './js/news_filter/render-by-category';
+import './js/news_filter/fillter-news-buttons';
+import './js/news_filter/render-by-category';
 import './js/mobile_menu';
 import './js/weather';
 import './js/listener';
@@ -11,3 +10,4 @@ import './js/readMore';
 import './js/calendar';
 import './js/pagination';
 // import './js/read_more_date';
+// import './js/pagination/pagination-category';
