@@ -36,6 +36,7 @@
     .filter-category__others-container.is-open &__container {
         transform: scale(1);
         pointer-events: auto;
+        display: block;
     }
 
     .filter-category__others-container.is-open &__others-button {
@@ -136,7 +137,8 @@
     }
 
     &__container {
-        overflow: hidden;
+        // overflow: hidden;
+        display: none;
         position: absolute;
         z-index: 2;
         transition-duration: 250ms;
