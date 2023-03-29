@@ -20,7 +20,6 @@ const refs = {
   paginator: document.querySelector('.pagination_search'),
   paginator_search: document.querySelector('.page-container-search'),
 };
-
 let valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
