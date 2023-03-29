@@ -6,9 +6,11 @@ const refs = {
   otherList: document.querySelector('.filter-category__others-container'),
   othersBtEl: document.querySelector('.filter-category__others-button > span'),
   listButtons: document.querySelector('.filter-category__list-bt'),
+  activeBtn: document.querySelector('.filter-category__item-bt'),
   loader: document.querySelector('.news-loader__container.container'),
   pagination: document.querySelector('.pagination_search'),
   listNews: document.querySelector('ul.list-news'),
+  input: document.querySelector('#search-field__input'),
 };
 
 const inputEl = document.querySelector('#search-field__input');
@@ -162,7 +164,13 @@ function addActiveClass(evt) {
   }
   selectedCategoryEl = evt.target;
   evt.target.classList.add('isActive-outsideBt');
+  const isActive = document.querySelector('.isActive-outsideBt');
+  console.log(isActive);
+  refs.input.addEventListener('click', () => {
+    isActive.classList.remove('isActive-outsideBt');
+  });
 }
+
 function onClickCategory(evt) {
   addActiveClass(evt);
   if (evt.target.textContent.length > 20) {
