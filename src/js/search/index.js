@@ -29,10 +29,11 @@ let page = 0;
 refs.form.addEventListener('submit', test);
 let windowWidth = 0;
 let wetherPosition = 0;
+
 async function test(e) {
   e.preventDefault();
+  let value = refs.input.value.trim();
 
-  const value = refs.input.value;
   refs.loader.classList.remove('is-hidden');
   const data = await getSearchArticle(value, page);
 
@@ -63,10 +64,7 @@ async function test(e) {
     wetherPosition = 1;
   }
   const markup = render(data, windowWidth);
-  if (value === '') {
-    swal('Ooops..', 'Please enter something', 'info');
-    return;
-  }
+
   if (data.length === 0) {
     refs.newsList.innerHTML = '';
     refs.pagination.classList.add('pagination-hidden');
