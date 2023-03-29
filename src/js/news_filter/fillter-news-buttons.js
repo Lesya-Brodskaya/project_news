@@ -11,10 +11,13 @@ const refs = {
   listNews: document.querySelector('ul.list-news'),
 };
 
+const inputEl = document.querySelector('#search-field__input');
+
 refs.listButtons.addEventListener('click', () => {
   document
     .querySelector('.page-container-cat')
     .classList.add('pagination-cat-hidden');
+    inputEl.value = '';
 });
 
 let selectedCategory = '';
@@ -24,9 +27,33 @@ let wetherPosition;
 let currentNumberCategories = 0;
 let outsideCategories = 0;
 
+
 getCategoryRender();
 
+// window.addEventListener('resize', onWindowWidthResize);
+
+// function onWindowWidthResize() {
+//   if (window.innerWidth < 768) {
+//     windowWidth = 4;
+//     wetherPosition = -1;
+//     refs.othersBtEl.textContent = 'Categories';
+//   }
+//   if (window.innerWidth > 768 && window.innerWidth < 1280) {
+//     windowWidth = 7;
+//     wetherPosition = 0;
+//     refs.othersBtEl.textContent = 'Others';
+//   }
+//   if (window.innerWidth >= 1280) {
+//     windowWidth = 8;
+//     wetherPosition = 1;
+//   }
+// }
+
 refs.otherList.addEventListener('click', onClickOther);
+
+
+let page = 0;
+
 
 async function getCategoryRender() {
   // проверка ширины дисплея
