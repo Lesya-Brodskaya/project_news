@@ -13,7 +13,7 @@ newsDate.addEventListener('change', async event => {
   // const searchDate = moment(event.detail.date).format("YYYY-MM-DD");
   const searchDate = newsDate.value.replace(/\//g, '-');
   const articl = await galleryFetch('', 0, `pub_date: ${searchDate}`);
-  console.log(articl);
+  // console.log(articl)
 });
 export async function galleryFetch(queryLine, currentPage, fq) {
   try {

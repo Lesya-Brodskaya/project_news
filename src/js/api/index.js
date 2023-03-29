@@ -10,17 +10,18 @@ async function getPopularArticle() {
   return results;
 }
 
-async function getCategoryList() {
-  const categoryList = await fetch(
-    `${BASE_URL}//news/v3/content/section-list.json?${KEY}`
-  );
-  const categories = await categoryList.json();
-  let { results } = categories;
+// async function getCategoryList() {
+//   const categoryList = await fetch(
+//     `${BASE_URL}//news/v3/content/section-list.json?${KEY}`
+//   );
+//   const categories = await categoryList.json();
+//   let { results } = categories;
 
-  // console.log(results);
+//   // console.log(results);
 
-  return results;
-}
+//   return results;
+// }
+
 let sumPage;
 async function getSearchArticle(value, page) {
   let dateForUrl = '';
@@ -56,22 +57,43 @@ async function getSearchArticle(value, page) {
 
   return docs;
 }
-async function getArticleByCategory(value, date) {
+
+// async function getArticleByCategory(value, date) {
+//   try {
+//     let newValue = encodeURIComponent(value);
+
+//     const articleFetch = await fetch(
+//       `${BASE_URL}/news/v3/content/all/${newValue}.json?${KEY}&limit=26&pub_date:${date}`
+//     );
+
+//     const articles = await articleFetch.json();
+
+//     let { results } = articles;
+
+//     // console.log(results);
+//     return results;
+//   } catch (e) {
+//     // console.log(e.message);
+//   }
+// }
+
+async function getArticleByCategory(category) {
   try {
-    let newValue = encodeURIComponent(value);
+    // let newValue = encodeURIComponent(category);
 
     const articleFetch = await fetch(
-      `${BASE_URL}/news/v3/content/all/${newValue}.json?${KEY}&limit=26&pub_date:${date}`
+      `${BASE_URL}/news/v3/content/all/${category}.json?${KEY}&limit=26`
     );
 
     const articles = await articleFetch.json();
 
     let { results } = articles;
+    console.log();
 
     // console.log(results);
     return results;
-  } catch (e) {
-    // console.log(e.message);
+  } catch (error) {
+    console.log(error);
   }
 }
 
