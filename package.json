@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Heorhii22.github.io/project-news-06",
+  "homepage": "https://Lesya-Brodskaya.github.io/project_news",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /project-news-06/"
+    "build": "parcel build src/*.html --public-url /project_news/"
   },
   "repository": {
     "type": "git",
